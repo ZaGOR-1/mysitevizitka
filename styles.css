@@ -277,6 +277,7 @@ pre {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .brand::before {
@@ -533,7 +534,7 @@ html[data-theme="light"] .theme-toggle::before {
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 18ch;
   margin: 0;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);

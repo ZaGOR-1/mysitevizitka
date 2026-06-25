@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Denis portfolio preview">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Денис Загоровський portfolio preview">
   <rect width="1200" height="630" fill="#0d0f12"/>
   <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M240 0v630M480 0v630M720 0v630M960 0v630" stroke="#202832" stroke-width="1"/>
   <rect x="96" y="96" width="1008" height="438" rx="18" fill="#151a20" stroke="#33404d"/>
   <text x="150" y="190" fill="#7dd3c7" font-family="Consolas, monospace" font-size="28">available for learning projects</text>
-  <text x="150" y="300" fill="#f3f7fb" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="700">Denis</text>
+  <text x="150" y="300" fill="#f3f7fb" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="700">Денис Загоровський</text>
   <text x="150" y="370" fill="#98a4b3" font-family="Inter, Arial, sans-serif" font-size="34">Software Engineering Student</text>
   <text x="150" y="450" fill="#d8f3ef" font-family="Consolas, monospace" font-size="30">focus: Web · Backend · Linux · Automation</text>
 </svg>

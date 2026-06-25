@@ -1,4 +1,4 @@
-# Denis Portfolio
+# Денис Загоровський / Denys Zahorovskyi Portfolio
 
 Легкий статичний сайт-візитка / міні-портфоліо програміста у стилі **Editorial Tech Portfolio + Terminal accents**.
 
@@ -50,7 +50,12 @@ python3 -m http.server 8000
 
 ### Ім'я
 
-Шукай `Denis` у `index.html`:
+Ім'я перемикається залежно від мови:
+
+- UA: `Денис Загоровський`;
+- EN: `Denys Zahorovskyi`.
+
+Основні значення лежать у `script.js` в `translations.uk.site.name`, `translations.en.site.name` і `hero.name`.
 
 - у `<title>`;
 - у meta tags;

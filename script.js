@@ -2,14 +2,17 @@
   const translations = {
     uk: {
       meta: {
-        title: "Denis — сайт-візитка програміста",
-        description: "Персональний сайт Denis: студент Software Engineering, початківець backend/frontend developer, який вивчає веброзробку, Linux, сервери й автоматизацію.",
-        ogTitle: "Denis — Software Engineering Student",
+        title: "Денис Загоровський — сайт-візитка програміста",
+        description: "Персональний сайт Дениса Загоровського: студент Software Engineering, початківець backend/frontend developer, який вивчає веброзробку, Linux, сервери й автоматизацію.",
+        ogTitle: "Денис Загоровський — Software Engineering Student",
         ogDescription: "Мінімалістичне портфоліо студента Software Engineering з фокусом на Web, Backend, Linux і Automation.",
         locale: "uk_UA"
       },
       skip: {
         toContent: "Перейти до контенту"
+      },
+      site: {
+        name: "Денис Загоровський"
       },
       language: {
         ukLabel: "Перемкнути мову на українську",
@@ -35,9 +38,9 @@
         focusGrid: "Поточні напрями розвитку",
         skills: "Навички за категоріями",
         githubList: "Що можна знайти на GitHub",
-        githubProfile: "GitHub профіль Denis",
-        telegramProfile: "Telegram профіль Denis",
-        linkedinProfile: "LinkedIn профіль Denis",
+        githubProfile: "GitHub профіль Дениса Загоровського",
+        telegramProfile: "Telegram профіль Дениса Загоровського",
+        linkedinProfile: "LinkedIn профіль Дениса Загоровського",
         socialLinks: "Соцмережі та контакти"
       },
       nav: {
@@ -50,7 +53,7 @@
       hero: {
         status: "available for learning projects",
         role: "software engineering student / backend & frontend basics",
-        name: "Denis",
+        name: "Денис Загоровський",
         title: "Студент Software Engineering, який вивчає веброзробку, backend, Linux і автоматизацію.",
         description: "Пишу простий код, розбираюся в серверах і поступово збираю власний шлях у розробці.",
         factYear: "2nd year SE student",
@@ -59,7 +62,7 @@
         factOpen: "Open to learning projects",
         githubButton: "GitHub",
         contactButton: "Зв'язатися",
-        code: 'const developer = {\n  name: "Denis",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
+        code: 'const developer = {\n  name: "Денис Загоровський",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
       },
       about: {
         number: "01 / About",
@@ -128,14 +131,17 @@
     },
     en: {
       meta: {
-        title: "Denis — developer portfolio",
-        description: "Personal website of Denis, a Software Engineering student learning web development, backend, Linux, servers and automation.",
-        ogTitle: "Denis — developer portfolio",
+        title: "Denys Zahorovskyi — developer portfolio",
+        description: "Personal website of Denys Zahorovskyi, a Software Engineering student learning web development, backend, Linux, servers and automation.",
+        ogTitle: "Denys Zahorovskyi — developer portfolio",
         ogDescription: "Minimal developer portfolio of a Software Engineering student focused on Web, Backend, Linux and Automation.",
         locale: "en_US"
       },
       skip: {
         toContent: "Skip to content"
+      },
+      site: {
+        name: "Denys Zahorovskyi"
       },
       language: {
         ukLabel: "Switch language to Ukrainian",
@@ -161,9 +167,9 @@
         focusGrid: "Current growth directions",
         skills: "Skills by category",
         githubList: "What you can find on GitHub",
-        githubProfile: "Denis GitHub profile",
-        telegramProfile: "Denis Telegram profile",
-        linkedinProfile: "Denis LinkedIn profile",
+        githubProfile: "Denys Zahorovskyi GitHub profile",
+        telegramProfile: "Denys Zahorovskyi Telegram profile",
+        linkedinProfile: "Denys Zahorovskyi LinkedIn profile",
         socialLinks: "Social links and contact"
       },
       nav: {
@@ -176,7 +182,7 @@
       hero: {
         status: "available for learning projects",
         role: "software engineering student / backend & frontend basics",
-        name: "Denis",
+        name: "Denys Zahorovskyi",
         title: "Software Engineering student learning web development, backend, Linux and automation.",
         description: "I write simple code, explore servers and gradually build my own path in software development.",
         factYear: "2nd year SE student",
@@ -185,7 +191,7 @@
         factOpen: "Open to learning projects",
         githubButton: "GitHub",
         contactButton: "Contact me",
-        code: 'const developer = {\n  name: "Denis",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
+        code: 'const developer = {\n  name: "Denys Zahorovskyi",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
       },
       about: {
         number: "01 / About",
