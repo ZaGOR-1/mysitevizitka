@@ -316,6 +316,48 @@ pre {
   gap: var(--space-xs);
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: 2.6rem;
+  padding: 0.18rem;
+  background: var(--color-surface);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+}
+
+.language-button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.25rem;
+  height: 2.15rem;
+  padding: 0 var(--space-xs);
+  color: var(--color-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.language-button:hover,
+.language-button:focus-visible {
+  color: var(--color-text);
+  background: var(--color-accent-soft);
+}
+
+.language-button.is-active,
+.language-button[aria-pressed="true"] {
+  color: var(--color-bg);
+  background: var(--color-accent);
+}
+
 .theme-toggle,
 .menu-toggle {
   position: relative;
@@ -1043,6 +1085,16 @@ html[data-theme="light"] .theme-toggle::before {
 
   .header-actions {
     gap: var(--space-2xs);
+  }
+
+  .language-switch {
+    min-height: 2.45rem;
+  }
+
+  .language-button {
+    min-width: 2rem;
+    height: 2rem;
+    padding-inline: 0.38rem;
   }
 
   .theme-toggle,

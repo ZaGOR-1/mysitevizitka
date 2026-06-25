@@ -249,12 +249,54 @@ Fallback-шрифти залишені на випадок, якщо Google Font
 
 - перемикач dark/light theme;
 - збереження теми в `localStorage`;
+- перемикач мови UA / EN;
 - mobile menu;
 - smooth scroll;
 - reveal animation;
 - автоматичний рік у footer.
 
 Сайт залишається читабельним навіть якщо JavaScript не завантажиться.
+
+## Мультимовність
+
+Сайт підтримує українську та англійську мови. За замовчуванням відкривається українська, а вибір `UA / EN` зберігається в `localStorage` за ключем `site-language`.
+
+Переклади знаходяться в `script.js` в об'єкті `translations`.
+
+Щоб змінити текст:
+
+1. Знайди потрібний ключ у `translations.uk` або `translations.en`.
+2. Зміни значення.
+3. Відкрий сайт і перевір перемикач мови.
+
+HTML-елементи, які перекладаються, мають атрибути:
+
+```html
+data-i18n="hero.title"
+data-i18n-aria-label="aria.githubProfile"
+```
+
+Скрипт також оновлює:
+
+- `<html lang="uk">` / `<html lang="en">`;
+- `document.title`;
+- meta description;
+- Open Graph title/description;
+- Twitter title/description;
+- aria-label для theme toggle, mobile menu і language switcher.
+
+Щоб додати третю мову:
+
+1. Додай нову гілку в `translations`, наприклад `pl`.
+2. Скопіюй структуру з `translations.uk`.
+3. Переклади всі значення.
+4. Додай кнопку в `.language-switch`:
+
+```html
+<button class="language-button" type="button" data-language="pl" aria-pressed="false">PL</button>
+```
+
+5. Додай перевірку нової мови в `getSavedLanguage()` / `setLanguage()`.
 
 ## Деплой на VPS через Nginx
 
