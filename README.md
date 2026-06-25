@@ -305,18 +305,34 @@ data-i18n-aria-label="aria.githubProfile"
 
 ## Деплой на VPS через Nginx
 
-Приклад для Ubuntu/Debian VPS:
+Поточний продакшн-домен:
+
+```text
+about.me.hotzagor.tech
+```
+
+Поточна папка сайту на VPS:
+
+```text
+/var/www/mysitevizitka
+```
+
+### 1. Встановити Nginx і базові утиліти
 
 ```bash
 sudo apt update
-sudo apt install nginx git -y
-
-cd /var/www
-sudo git clone https://github.com/ZaGOR-1/portfolio.git portfolio
-sudo chown -R www-data:www-data /var/www/portfolio
+sudo apt install nginx git unzip rsync -y
 ```
 
-Для публічного сервера достатньо викладати тільки файли сайту:
+### 2. Перевірити файли сайту
+
+У публічній папці мають бути основні файли сайту:
+
+```bash
+ls -la /var/www/mysitevizitka
+```
+
+Мінімально для роботи сайту потрібні:
 
 ```text
 index.html
@@ -325,82 +341,188 @@ script.js
 assets/
 ```
 
-Файли на кшталт `promt.md`, `plan.md`, `fonts.md`, `update.md`, `AGENTS.md`, `PROMPT_PLAN_REVIEW.md` і папка `.git/` корисні в репозиторії, але не обов'язково мають бути доступні відвідувачам сайту.
+Файли на кшталт `README.md`, `AGENTS.md`, `docs/`, `promt.md`, `plan.md`, `.git/`, `*.zip` корисні для розробки, але їх краще не викладати у публічний webroot або закривати через Nginx.
 
-Створи конфіг:
+### 3. Налаштувати права
 
 ```bash
-sudo nano /etc/nginx/sites-available/portfolio
+sudo chown -R zagor:www-data /var/www/mysitevizitka
+sudo find /var/www/mysitevizitka -type d -exec chmod 755 {} \;
+sudo find /var/www/mysitevizitka -type f -exec chmod 644 {} \;
 ```
 
-Приклад Nginx-конфігу:
+### 4. Створити Nginx-конфіг
+
+```bash
+sudo nano /etc/nginx/sites-available/mysitevizitka
+```
+
+Встав конфіг:
 
 ```nginx
 server {
     listen 80;
-    server_name about.me.hotzagor.tech www.about.me.hotzagor.tech;
+    listen [::]:80;
 
-    root /var/www/portfolio;
+    server_name about.me.hotzagor.tech;
+
+    root /var/www/mysitevizitka;
     index index.html;
+
+    charset utf-8;
 
     location / {
         try_files $uri $uri/ =404;
     }
 
+    # Закрити .git, .env та інші приховані файли
     location ~ /\.(?!well-known) {
         deny all;
     }
 
-    location ~* \.(md|zip|log|env)$ {
+    # Закрити службові файли репозиторію
+    location ~* \.(md|zip|log|env|bak|old)$ {
         deny all;
+    }
+
+    # Кеш для статичних assets
+    location ~* \.(png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)$ {
+        expires 30d;
+        add_header Cache-Control "public";
+        try_files $uri =404;
+    }
+
+    # CSS/JS кешувати коротше, бо вони можуть часто оновлюватися
+    location ~* \.(css|js)$ {
+        expires 1h;
+        add_header Cache-Control "public";
+        try_files $uri =404;
     }
 }
 ```
 
-Активуй конфіг:
+Активуй сайт:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+sudo ln -sf /etc/nginx/sites-available/mysitevizitka /etc/nginx/sites-enabled/mysitevizitka
+sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-Після цього сайт має відкриватися за доменом, який вказаний у `server_name`.
+### 5. Перевірити HTTP
+
+```bash
+curl -I http://localhost -H "Host: about.me.hotzagor.tech"
+curl -I http://about.me.hotzagor.tech
+```
+
+Очікувано до встановлення HTTPS:
+
+```text
+HTTP/1.1 200 OK
+```
 
 ## HTTPS через Let's Encrypt
 
-Встанови Certbot:
+### 1. Встановити Certbot через snap
 
 ```bash
-sudo apt install certbot python3-certbot-nginx -y
+sudo apt install snapd -y
+sudo snap install core
+sudo snap refresh core
+sudo apt remove certbot python3-certbot-nginx -y
+sudo snap install --classic certbot
+sudo ln -sf /snap/bin/certbot /usr/local/bin/certbot
+certbot --version
 ```
 
-Отримай сертифікат:
+### 2. Отримати сертифікат
 
 ```bash
-sudo certbot --nginx -d about.me.hotzagor.tech -d www.about.me.hotzagor.tech
+sudo certbot --nginx -d about.me.hotzagor.tech
 ```
 
-Перевір автоматичне оновлення:
+Якщо Certbot запропонує redirect HTTP → HTTPS, обери redirect.
+
+### 3. Перевірити HTTPS і редірект
+
+```bash
+curl -I http://about.me.hotzagor.tech
+curl -I https://about.me.hotzagor.tech
+```
+
+Нормальний результат:
+
+```text
+http://about.me.hotzagor.tech   -> 301 Moved Permanently на HTTPS
+https://about.me.hotzagor.tech  -> 200 OK
+```
+
+### 4. Перевірити автопоновлення сертифіката
 
 ```bash
 sudo certbot renew --dry-run
 ```
 
+## Перевірка безпеки після деплою
+
+Перевір, що службові файли не віддаються з сайту:
+
+```bash
+curl -I https://about.me.hotzagor.tech/.git/config
+curl -I https://about.me.hotzagor.tech/README.md
+curl -I https://about.me.hotzagor.tech/AGENTS.md
+curl -I https://about.me.hotzagor.tech/docs/plan.md
+```
+
+Нормально, якщо відповідь:
+
+```text
+403 Forbidden
+```
+
+або:
+
+```text
+404 Not Found
+```
+
+Погано, якщо:
+
+```text
+200 OK
+```
+
 ## Як оновлювати сайт через Git
+
+На локальному ПК:
+
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+```
 
 На VPS:
 
 ```bash
-cd /var/www/portfolio
-sudo git pull
+cd /var/www/mysitevizitka
+git pull
+```
+
+Після зміни HTML/CSS/JS перезавантажувати Nginx не обов'язково. Але можна виконати:
+
+```bash
 sudo systemctl reload nginx
 ```
 
 Якщо змінювали права доступу або власника:
 
 ```bash
-sudo chown -R www-data:www-data /var/www/portfolio
+sudo chown -R zagor:www-data /var/www/mysitevizitka
+sudo find /var/www/mysitevizitka -type d -exec chmod 755 {} \;
+sudo find /var/www/mysitevizitka -type f -exec chmod 644 {} \;
 ```
 
 ## Поточні контактні значення
