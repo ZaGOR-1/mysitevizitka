@@ -51,38 +51,38 @@
         contact: "Контакти"
       },
       hero: {
-        status: "available for learning projects",
-        role: "software engineering student / backend & frontend basics",
+        status: "відкритий до навчальних проєктів",
+        role: "студент інженерії ПЗ / backend & frontend basics",
         name: "Денис Загоровський",
         title: "Студент Software Engineering, який вивчає веброзробку, backend, Linux і автоматизацію.",
         description: "Пишу простий код, розбираюся в серверах і поступово збираю власний шлях у розробці.",
-        factYear: "2nd year SE student",
+        factYear: "2 курс Software Engineering",
         factWeb: "Web / Backend",
         factLinux: "Linux & VPS",
-        factOpen: "Open to learning projects",
+        factOpen: "відкритий до навчальних проєктів",
         githubButton: "GitHub",
         contactButton: "Зв'язатися",
         code: 'const developer = {\n  name: "Денис Загоровський",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
       },
       about: {
-        number: "01 / About",
+        number: "01 / Про мене",
         title: "Про мене",
         p1: 'Я студент 2 курсу спеціальності 121 "Інженерія програмного забезпечення" у Житомирській політехніці. Зараз розвиваюся у веброзробці, вивчаю backend-підхід, роботу з базами даних, Linux-середовищем і розгортанням сайтів на VPS.',
         p2: "Мені цікаві практичні речі: сервери, автоматизація, Telegram-боти, оптимізація Windows, Minecraft-сервери й невеликі вебзастосунки, які можна реально запустити, перевірити й покращувати.",
-        profileEducationLabel: "Education",
-        profileEducationValue: "Software Engineering, 2nd year",
-        profileUniversityLabel: "University",
-        profileUniversityValue: "Zhytomyr Polytechnic",
-        profileFocusLabel: "Focus",
+        profileEducationLabel: "Освіта",
+        profileEducationValue: "Software Engineering, 2 курс",
+        profileUniversityLabel: "Університет",
+        profileUniversityValue: "Житомирська політехніка",
+        profileFocusLabel: "Фокус",
         profileFocusValue: "Web, Backend, Linux",
-        profileGoalLabel: "Goal",
-        profileGoalValue: "grow into a practical developer"
+        profileGoalLabel: "Ціль",
+        profileGoalValue: "вирости в практичного розробника"
       },
       focus: {
-        number: "02 / Focus",
+        number: "02 / Фокус",
         title: "Зараз у фокусі",
         intro: "Найбільше уваги зараз йде в практику: backend-основи, серверне середовище й маленькі інструменти, які можна довести до робочого стану.",
-        backendLabel: "Backend basics",
+        backendLabel: "Backend-основи",
         backendTitle: "PHP, Laravel, Symfony, APIs",
         backendText: "Розбираюся з логікою застосунків, маршрутами, базами даних і простими API.",
         linuxLabel: "Linux & VPS",
@@ -93,7 +93,7 @@
         automationText: "Пробую автоматизувати повторювані задачі й збирати невеликі корисні інструменти."
       },
       skills: {
-        number: "03 / Skills",
+        number: "03 / Навички",
         title: "Навички",
         frontendTitle: "Frontend",
         frontendText: "HTML, CSS, JavaScript",
@@ -119,14 +119,14 @@
         button: "Перейти на GitHub"
       },
       contact: {
-        number: "05 / Contact",
-        title: "Contact / Links",
-        status: "status: learning / open to practice",
+        number: "05 / Контакти",
+        title: "Контакти / Посилання",
+        status: "статус: навчаюсь / відкритий до практики",
         text: "Відкритий до навчальних проєктів, практики, стажування або невеликої співпраці, де можна попрацювати з реальними задачами й вирости як розробник.",
         button: "Написати мені"
       },
       footer: {
-        note: "built with html/css/js · hosted on vps"
+        note: "зроблено на html/css/js · розміщено на vps"
       }
     },
     en: {
