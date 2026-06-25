@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+.codex-log/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Node artifacts, only in case tools are used locally by accident
+node_modules/
+dist/
+build/
+
+# Local archives
+*.zip
+*.7z
+*.rar
