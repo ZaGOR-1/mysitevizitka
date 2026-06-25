@@ -11,13 +11,16 @@
     <meta property="og:title" content="Denis — Software Engineering Student">
     <meta property="og:description" content="Мінімалістичне портфоліо студента Software Engineering з фокусом на Web, Backend, Linux і Automation.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com">
-    <meta property="og:image" content="https://example.com/assets/og-image.svg">
+    <meta property="og:url" content="https://about.me.hotzagor.tech">
+    <meta property="og:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
     <meta property="og:locale" content="uk_UA">
 
     <title>Denis — Software Engineering Student</title>
 
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -29,6 +32,7 @@
 
         <nav class="site-nav" id="site-nav" aria-label="Основна навігація">
           <a href="#about">Про мене</a>
+          <a href="#focus">Фокус</a>
           <a href="#skills">Навички</a>
           <a href="#github">GitHub</a>
           <a href="#contact">Контакти</a>
@@ -58,8 +62,14 @@
             <p class="hero-note">
               Пишу простий код, розбираюся в серверах і поступово збираю власний шлях у розробці.
             </p>
+            <ul class="quick-facts" aria-label="Короткі факти профілю">
+              <li>2nd year SE student</li>
+              <li>Web / Backend</li>
+              <li>Linux & VPS</li>
+              <li>Open to learning projects</li>
+            </ul>
             <div class="hero-actions" aria-label="Основні дії">
-              <a class="button button-primary" href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="Відкрити GitHub профіль Denis">
+              <a class="button button-primary" href="https://github.com/ZaGOR-1" target="_blank" rel="noopener noreferrer" aria-label="Відкрити GitHub профіль Denis">
                 GitHub
               </a>
               <a class="button button-secondary" href="#contact">Зв'язатися</a>
@@ -75,7 +85,8 @@
             <pre class="terminal-code"><code>const developer = {
   name: "Denis",
   role: "Software Engineering Student",
-  focus: ["Web", "Backend", "Linux", "Automation"]
+  focus: ["Backend", "Web", "Linux", "Automation"],
+  learning: ["Laravel", "Symfony", "VPS Deploy"]
 };</code></pre>
           </aside>
         </div>
@@ -102,6 +113,55 @@
               <li class="tag">vps</li>
               <li class="tag">telegram bots</li>
             </ul>
+            <dl class="profile-panel" aria-label="Quick profile">
+              <div>
+                <dt>Education</dt>
+                <dd>Software Engineering, 2nd year</dd>
+              </div>
+              <div>
+                <dt>University</dt>
+                <dd>Zhytomyr Polytechnic</dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd>Web, Backend, Linux</dd>
+              </div>
+              <div>
+                <dt>Goal</dt>
+                <dd>grow into a practical developer</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="focus" aria-labelledby="focus-title">
+        <div class="container section-grid reveal">
+          <div class="section-heading">
+            <p class="section-number">02 / Focus</p>
+            <h2 class="section-title" id="focus-title">Зараз у фокусі</h2>
+          </div>
+          <div class="section-content">
+            <p>
+              Найбільше уваги зараз йде в практику: backend-основи, серверне середовище й маленькі інструменти, які можна довести до робочого стану.
+            </p>
+            <div class="focus-grid" aria-label="Поточні напрями розвитку">
+              <article class="focus-item">
+                <p class="item-label">Backend basics</p>
+                <h3>PHP, Laravel, Symfony, APIs</h3>
+                <p>Розбираюся з логікою застосунків, маршрутами, базами даних і простими API.</p>
+              </article>
+              <article class="focus-item">
+                <p class="item-label">Linux & VPS</p>
+                <h3>Ubuntu, Nginx / Apache, deployment</h3>
+                <p>Практикую розгортання статичних сайтів і базову роботу з серверним середовищем.</p>
+              </article>
+              <article class="focus-item">
+                <p class="item-label">Automation</p>
+                <h3>Scripts, Telegram bots, small tools</h3>
+                <p>Пробую автоматизувати повторювані задачі й збирати невеликі корисні інструменти.</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -109,29 +169,32 @@
       <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="container section-grid reveal">
           <div class="section-heading">
-            <p class="section-number">02 / Skills</p>
+            <p class="section-number">03 / Skills</p>
             <h2 class="section-title" id="skills-title">Навички</h2>
           </div>
           <div class="section-content">
-            <ul class="tag-list skills-list" aria-label="Список технологій">
-              <li class="tag">#html</li>
-              <li class="tag">#css</li>
-              <li class="tag">#javascript</li>
-              <li class="tag">#php</li>
-              <li class="tag">#laravel</li>
-              <li class="tag">#symfony</li>
-              <li class="tag">#python</li>
-              <li class="tag">#mysql</li>
-              <li class="tag">#sqlite</li>
-              <li class="tag">#git</li>
-              <li class="tag">#github</li>
-              <li class="tag">#linux</li>
-              <li class="tag">#ubuntu</li>
-              <li class="tag">#vps</li>
-              <li class="tag">#nginx</li>
-              <li class="tag">#apache</li>
-              <li class="tag">#telegram-bots</li>
-            </ul>
+            <div class="skill-groups" aria-label="Навички за категоріями">
+              <section class="skill-group" aria-labelledby="skill-frontend">
+                <h3 id="skill-frontend">Frontend</h3>
+                <p>HTML, CSS, JavaScript</p>
+              </section>
+              <section class="skill-group" aria-labelledby="skill-backend">
+                <h3 id="skill-backend">Backend</h3>
+                <p>PHP, Laravel, Symfony, Python</p>
+              </section>
+              <section class="skill-group" aria-labelledby="skill-databases">
+                <h3 id="skill-databases">Databases</h3>
+                <p>MySQL, SQLite</p>
+              </section>
+              <section class="skill-group" aria-labelledby="skill-tools">
+                <h3 id="skill-tools">Tools & Server</h3>
+                <p>Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache</p>
+              </section>
+              <section class="skill-group" aria-labelledby="skill-automation">
+                <h3 id="skill-automation">Automation</h3>
+                <p>Telegram bots, scripts, small tools</p>
+              </section>
+            </div>
           </div>
         </div>
       </section>
@@ -139,40 +202,23 @@
       <section class="section github-section" id="github" aria-labelledby="github-title">
         <div class="container reveal">
           <div class="github-panel surface">
-            <p class="section-number">03 / GitHub</p>
+            <p class="section-number">04 / GitHub</p>
             <h2 class="section-title" id="github-title">Мої роботи</h2>
             <p>
               Навчальні, особисті та експериментальні проєкти я збираю на GitHub. Там можна знайти вебзастосунки, невеликі backend-експерименти, Telegram-боти, автоматизацію та інші речі, які я поступово доробляю й покращую.
             </p>
-            <p class="github-url">github.com/username</p>
-            <a class="button button-primary" href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="Перейти на GitHub профіль Denis">
+            <ul class="github-list" aria-label="Що можна знайти на GitHub">
+              <li>student projects</li>
+              <li>web applications</li>
+              <li>backend experiments</li>
+              <li>Telegram bots</li>
+              <li>automation scripts</li>
+              <li>Linux/VPS notes</li>
+            </ul>
+            <p class="github-url">github.com/ZaGOR-1</p>
+            <a class="button button-primary" href="https://github.com/ZaGOR-1" target="_blank" rel="noopener noreferrer" aria-label="Перейти на GitHub профіль Denis">
               Перейти на GitHub
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section social-section" aria-labelledby="social-title">
-        <div class="container section-grid reveal">
-          <div class="section-heading">
-            <p class="section-number">links</p>
-            <h2 class="section-title" id="social-title">Соцмережі</h2>
-          </div>
-          <div class="section-content">
-            <ul class="social-links">
-              <li>
-                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="GitHub профіль Denis">GitHub</a>
-              </li>
-              <li>
-                <a href="https://t.me/username" target="_blank" rel="noopener noreferrer" aria-label="Telegram профіль Denis">Telegram</a>
-              </li>
-              <li>
-                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn профіль Denis">LinkedIn</a>
-              </li>
-              <li>
-                <a href="mailto:your.email@example.com">Email</a>
-              </li>
-            </ul>
           </div>
         </div>
       </section>
@@ -180,18 +226,37 @@
       <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="container section-grid reveal">
           <div class="section-heading">
-            <p class="section-number">04 / Contact</p>
-            <h2 class="section-title" id="contact-title">Контакти</h2>
+            <p class="section-number">05 / Contact</p>
+            <h2 class="section-title" id="contact-title">Contact / Links</h2>
           </div>
           <div class="section-content">
-            <p>
-              Відкритий до навчальних проєктів, практики, стажування або невеликої співпраці, де можна попрацювати з реальними задачами й вирости як розробник.
-            </p>
-            <p>
-              <a class="contact-email" href="mailto:your.email@example.com">your.email@example.com</a>
-            </p>
-            <div class="contact-actions">
-              <a class="button button-primary" href="mailto:your.email@example.com">Написати мені</a>
+            <div class="contact-panel">
+              <div class="contact-copy">
+                <p class="item-label">status: learning / open to practice</p>
+                <p>
+                  Відкритий до навчальних проєктів, практики, стажування або невеликої співпраці, де можна попрацювати з реальними задачами й вирости як розробник.
+                </p>
+                <p>
+                  <a class="contact-email" href="mailto:ran31276@gmail.com">ran31276@gmail.com</a>
+                </p>
+                <div class="contact-actions">
+                  <a class="button button-primary" href="mailto:ran31276@gmail.com">Написати мені</a>
+                </div>
+              </div>
+              <ul class="social-links compact-links" aria-label="Соцмережі та контакти">
+                <li>
+                  <a href="https://github.com/ZaGOR-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub профіль Denis">GitHub</a>
+                </li>
+                <li>
+                  <a href="https://t.me/Denis_Zagor" target="_blank" rel="noopener noreferrer" aria-label="Telegram профіль Denis">Telegram</a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/denis-zagorovskiy-a23b05410" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn профіль Denis">LinkedIn</a>
+                </li>
+                <li>
+                  <a href="mailto:ran31276@gmail.com">Email</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

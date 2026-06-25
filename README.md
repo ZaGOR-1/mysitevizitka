@@ -14,6 +14,7 @@
 ├── assets/
 │   ├── favicon.svg
 │   ├── og-image.svg
+│   ├── og-image.png
 │   └── README.md
 └── README.md
 ```
@@ -84,7 +85,23 @@ python3 -m http.server 8000
 <section class="section" id="about" aria-labelledby="about-title">
 ```
 
-Там можна змінити текст про себе, навчання й інтереси.
+Там можна змінити текст про себе, навчання, інтереси та блок `Quick profile`.
+
+### Focus
+
+Секція Focus починається з:
+
+```html
+<section class="section" id="focus" aria-labelledby="focus-title">
+```
+
+Там описані поточні напрями розвитку:
+
+- Backend basics;
+- Linux & VPS;
+- Automation.
+
+Це не секція проєктів, а короткий блок про те, що зараз вивчається й практикується.
 
 ### Навички
 
@@ -94,22 +111,24 @@ python3 -m http.server 8000
 <section class="section" id="skills" aria-labelledby="skills-title">
 ```
 
-Навички оформлені як список:
+Навички згруповані за категоріями:
 
 ```html
-<li class="tag">#php</li>
-<li class="tag">#linux</li>
+<section class="skill-group" aria-labelledby="skill-backend">
+  <h3 id="skill-backend">Backend</h3>
+  <p>PHP, Laravel, Symfony, Python</p>
+</section>
 ```
 
-Можна додавати, видаляти або перейменовувати `li`.
+Можна змінювати назви категорій, список технологій або додавати нові `.skill-group`.
 
 ### GitHub
 
 Заміни всі входження:
 
 ```text
-https://github.com/username
-github.com/username
+https://github.com/ZaGOR-1
+github.com/ZaGOR-1
 ```
 
 на своє посилання.
@@ -119,7 +138,7 @@ github.com/username
 Заміни:
 
 ```text
-https://t.me/username
+https://t.me/Denis_Zagor
 ```
 
 ### LinkedIn
@@ -127,7 +146,7 @@ https://t.me/username
 Заміни:
 
 ```text
-https://linkedin.com/in/username
+https://www.linkedin.com/in/denis-zagorovskiy-a23b05410
 ```
 
 ### Email
@@ -135,11 +154,21 @@ https://linkedin.com/in/username
 Заміни:
 
 ```text
-your.email@example.com
-mailto:your.email@example.com
+ran31276@gmail.com
+mailto:ran31276@gmail.com
 ```
 
 на свій email.
+
+### Contact / Links
+
+Контакти й соцмережі об'єднані в одну компактну секцію:
+
+```html
+<section class="section" id="contact" aria-labelledby="contact-title">
+```
+
+Там змінюються email, кнопка `Написати мені` та посилання на GitHub, Telegram і LinkedIn.
 
 ## Як змінити дизайн
 
@@ -183,14 +212,20 @@ html[data-theme="light"] {
 
 ### Шрифти
 
-Шрифти задані без CDN, через системні fallback:
+Шрифти підключені через Google Fonts у `index.html`:
+
+- `Manrope` з вагами `400`, `500`, `600`, `700`;
+- `JetBrains Mono` з вагами `400`, `500`, `600`;
+- `display=swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження.
+
+У `styles.css` вони задані через CSS-змінні:
 
 ```css
---font-sans: "Space Grotesk", "Inter", "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
---font-mono: "JetBrains Mono", "IBM Plex Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+--font-sans: "Manrope", "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+--font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 ```
 
-Якщо потрібні локальні шрифти, поклади їх в `assets/` і підключи через `@font-face`.
+Fallback-шрифти залишені на випадок, якщо Google Fonts не завантажаться.
 
 ### Відступи та radius
 
@@ -201,7 +236,7 @@ html[data-theme="light"] {
 --space-md: 1rem;
 --space-lg: 1.5rem;
 --space-xl: 2.25rem;
---section-padding: clamp(4rem, 9vw, 7rem);
+--section-padding: clamp(3rem, 6.5vw, 5rem);
 
 --radius-sm: 6px;
 --radius-md: 8px;
@@ -230,9 +265,20 @@ sudo apt update
 sudo apt install nginx git -y
 
 cd /var/www
-sudo git clone https://github.com/username/portfolio.git portfolio
+sudo git clone https://github.com/ZaGOR-1/portfolio.git portfolio
 sudo chown -R www-data:www-data /var/www/portfolio
 ```
+
+Для публічного сервера достатньо викладати тільки файли сайту:
+
+```text
+index.html
+styles.css
+script.js
+assets/
+```
+
+Файли на кшталт `promt.md`, `plan.md`, `fonts.md`, `update.md`, `AGENTS.md`, `PROMPT_PLAN_REVIEW.md` і папка `.git/` корисні в репозиторії, але не обов'язково мають бути доступні відвідувачам сайту.
 
 Створи конфіг:
 
@@ -245,13 +291,21 @@ sudo nano /etc/nginx/sites-available/portfolio
 ```nginx
 server {
     listen 80;
-    server_name example.com www.example.com;
+    server_name about.me.hotzagor.tech www.about.me.hotzagor.tech;
 
     root /var/www/portfolio;
     index index.html;
 
     location / {
         try_files $uri $uri/ =404;
+    }
+
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+
+    location ~* \.(md|zip|log|env)$ {
+        deny all;
     }
 }
 ```
@@ -277,7 +331,7 @@ sudo apt install certbot python3-certbot-nginx -y
 Отримай сертифікат:
 
 ```bash
-sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot --nginx -d about.me.hotzagor.tech -d www.about.me.hotzagor.tech
 ```
 
 Перевір автоматичне оновлення:
@@ -302,16 +356,16 @@ sudo systemctl reload nginx
 sudo chown -R www-data:www-data /var/www/portfolio
 ```
 
-## Що замінити перед публікацією
+## Поточні контактні значення
 
-- `https://github.com/username`
-- `github.com/username`
-- `https://t.me/username`
-- `https://linkedin.com/in/username`
-- `your.email@example.com`
-- `https://example.com`
-- `example.com`
-- `assets/og-image.svg`, якщо зміниш Open Graph image
+- `https://github.com/ZaGOR-1`
+- `github.com/ZaGOR-1`
+- `https://t.me/Denis_Zagor`
+- `https://www.linkedin.com/in/denis-zagorovskiy-a23b05410`
+- `ran31276@gmail.com`
+- `https://about.me.hotzagor.tech`
+- `about.me.hotzagor.tech`
+- `assets/og-image.png`, якщо зміниш Open Graph image
 
 ## Технічні нотатки
 

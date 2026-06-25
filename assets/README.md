@@ -7,12 +7,13 @@
 ```text
 favicon.svg
 og-image.svg
+og-image.png
 ```
 
 ## Що можна додавати
 
 - `favicon.svg` або інші favicon-файли;
-- Open Graph image, наприклад `og-image.svg` або `og-image.png`;
+- Open Graph image, наприклад `og-image.png` або `og-image.svg`;
 - локальні шрифти, якщо вирішиш не використовувати системні fallback;
 - невеликі іконки або зображення, якщо вони реально потрібні дизайну.
 
