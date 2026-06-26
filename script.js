@@ -62,7 +62,7 @@
         factOpen: "відкритий до навчальних проєктів",
         githubButton: "GitHub",
         contactButton: "Зв'язатися",
-        code: 'const developer = {\n  name: "Денис Загоровський",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
+        code: '<span class="code-keyword">const</span> <span class="code-def">developer</span> = {\n  name: <span class="code-string">"Денис Загоровський"</span>,\n  role: <span class="code-string">"Software Engineering Student"</span>,\n  focus: [<span class="code-string">"Backend"</span>, <span class="code-string">"Web"</span>, <span class="code-string">"Linux"</span>, <span class="code-string">"Automation"</span>],\n  learning: [<span class="code-string">"Laravel"</span>, <span class="code-string">"Symfony"</span>, <span class="code-string">"VPS Deploy"</span>]\n};'
       },
       about: {
         number: "01 / Про мене",
@@ -191,7 +191,7 @@
         factOpen: "Open to learning projects",
         githubButton: "GitHub",
         contactButton: "Contact me",
-        code: 'const developer = {\n  name: "Denys Zahorovskyi",\n  role: "Software Engineering Student",\n  focus: ["Backend", "Web", "Linux", "Automation"],\n  learning: ["Laravel", "Symfony", "VPS Deploy"]\n};'
+        code: '<span class="code-keyword">const</span> <span class="code-def">developer</span> = {\n  name: <span class="code-string">"Denys Zahorovskyi"</span>,\n  role: <span class="code-string">"Software Engineering Student"</span>,\n  focus: [<span class="code-string">"Backend"</span>, <span class="code-string">"Web"</span>, <span class="code-string">"Linux"</span>, <span class="code-string">"Automation"</span>],\n  learning: [<span class="code-string">"Laravel"</span>, <span class="code-string">"Symfony"</span>, <span class="code-string">"VPS Deploy"</span>]\n};'
       },
       about: {
         number: "01 / About",
@@ -328,7 +328,11 @@
     document.querySelectorAll("[data-i18n]").forEach(function (element) {
       const value = getValue(element.dataset.i18n, lang);
       if (typeof value === "string") {
-        element.textContent = value;
+        if (element.tagName === "CODE" || element.classList.contains("html-content")) {
+          element.innerHTML = value;
+        } else {
+          element.textContent = value;
+        }
       }
     });
 
