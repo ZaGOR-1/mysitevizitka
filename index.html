@@ -86,16 +86,37 @@
 
           <aside class="terminal-card reveal" aria-label="Короткий профіль у форматі коду" data-i18n-aria-label="aria.terminal">
             <div class="terminal-header" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+              <div class="terminal-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="terminal-tabs">
+                <button class="terminal-tab is-active" type="button" data-tab="json">profile.json</button>
+                <button class="terminal-tab" type="button" data-tab="sh">terminal.sh</button>
+              </div>
             </div>
-            <pre class="terminal-code"><code data-i18n="hero.code">const developer = {
+            
+            <pre class="terminal-code" id="terminal-json"><code data-i18n="hero.code">const developer = {
   name: "Денис Загоровський",
   role: "Software Engineering Student",
   focus: ["Backend", "Web", "Linux", "Automation"],
   learning: ["Laravel", "Symfony", "VPS Deploy"]
 };</code></pre>
+
+            <div class="terminal-cli" id="terminal-sh" style="display: none;">
+              <div class="cli-output"></div>
+              <div class="cli-input-line">
+                <span class="cli-prompt">visitor@zagor-vps:~$</span>
+                <input class="cli-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input">
+              </div>
+            </div>
+
+            <div class="terminal-status" aria-hidden="true">
+              <span class="status-left">VPS-RUNNING</span>
+              <span class="status-center">profile.json [UTF-8]</span>
+              <span class="status-right" id="status-clock">00:00:00</span>
+            </div>
           </aside>
         </div>
       </section>
@@ -226,6 +247,23 @@
                 <li data-i18n="github.itemAutomation">automation scripts</li>
                 <li data-i18n="github.itemNotes">Linux/VPS notes</li>
               </ul>
+              
+              <div class="github-contrib-card" aria-hidden="true">
+                <div class="contrib-header">
+                  <span class="contrib-title">Contributions Calendar</span>
+                  <span class="contrib-count">421 commits in the last year</span>
+                </div>
+                <div class="github-contrib-grid"></div>
+                <div class="contrib-legend">
+                  <span>Less</span>
+                  <span class="legend-square level-0"></span>
+                  <span class="legend-square level-1"></span>
+                  <span class="legend-square level-2"></span>
+                  <span class="legend-square level-3"></span>
+                  <span>More</span>
+                </div>
+              </div>
+
               <p class="github-url">github.com/ZaGOR-1</p>
               <a class="button button-primary" href="https://github.com/ZaGOR-1" target="_blank" rel="noopener noreferrer" aria-label="Перейти на GitHub профіль Дениса Загоровського" data-i18n-aria-label="aria.githubProfile" data-i18n="github.button">
                 Перейти на GitHub

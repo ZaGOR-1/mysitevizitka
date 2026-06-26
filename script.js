@@ -127,6 +127,18 @@
       },
       footer: {
         note: "зроблено на html/css/js · розміщено на vps"
+      },
+      cli: {
+        help: "Доступні команди:\n  neofetch  - інформація про систему\n  skills    - список моїх навичок\n  about     - інформація про мене\n  clear     - очистити термінал\n  help      - показати цю довідку",
+        welcome: "Введіть 'help' для списку команд.",
+        skillsHeader: "=== МОЇ НАВИЧКИ ===",
+        skillsGroupFrontend: "Frontend: HTML, CSS, JavaScript",
+        skillsGroupBackend: "Backend: PHP, Laravel, Symfony, Python",
+        skillsGroupDB: "Databases: MySQL, SQLite",
+        skillsGroupTools: "Tools: Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache",
+        skillsGroupAuto: "Automation: Telegram bots, scripts",
+        aboutText: "Я студент 2 курсу спеціальності 121 \"Інженерія програмного забезпечення\" у Житомирській політехніці.\nВивчаю backend, роботу з базами даних, Linux-середовище й автоматизацію.",
+        unknown: "Команда не знайдена: {cmd}. Введіть 'help' для довідки."
       }
     },
     en: {
@@ -256,6 +268,18 @@
       },
       footer: {
         note: "built with html/css/js · hosted on vps"
+      },
+      cli: {
+        help: "Available commands:\n  neofetch  - system information\n  skills    - list of my skills\n  about     - information about me\n  clear     - clear terminal\n  help      - show this help message",
+        welcome: "Type 'help' to see available commands.",
+        skillsHeader: "=== MY SKILLS ===",
+        skillsGroupFrontend: "Frontend: HTML, CSS, JavaScript",
+        skillsGroupBackend: "Backend: PHP, Laravel, Symfony, Python",
+        skillsGroupDB: "Databases: MySQL, SQLite",
+        skillsGroupTools: "Tools: Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache",
+        skillsGroupAuto: "Automation: Telegram bots, scripts",
+        aboutText: "I am a 2nd year Software Engineering student at Zhytomyr Polytechnic.\nLearning backend, databases, Linux environments and automation.",
+        unknown: "Command not found: {cmd}. Type 'help' for help."
       }
     }
   };
@@ -516,5 +540,191 @@
     yearNode.textContent = String(new Date().getFullYear());
   }
 
+  // Dynamic Uptime and Clock
+  const startTime = Date.now();
+  const statusClock = document.getElementById("status-clock");
+  const statusCenter = document.querySelector(".status-center");
+
+  function updateClock() {
+    if (!statusClock) return;
+    const now = new Date();
+    const pad = (num) => String(num).padStart(2, "0");
+    statusClock.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+  }
+
+  function getUptimeString() {
+    const elapsedMs = Date.now() - startTime;
+    const totalSecs = Math.floor(elapsedMs / 1000);
+    const hours = Math.floor(totalSecs / 3600);
+    const minutes = Math.floor((totalSecs % 3600) / 60);
+    const seconds = totalSecs % 60;
+    
+    let parts = [];
+    if (hours > 0) parts.push(hours + "h");
+    if (minutes > 0 || hours > 0) parts.push(minutes + "m");
+    parts.push(seconds + "s");
+    return parts.join(" ");
+  }
+
+  // CLI Engine
+  const cliOutput = document.querySelector(".cli-output");
+  const cliInput = document.querySelector(".cli-input");
+  const terminalCli = document.getElementById("terminal-sh");
+
+  function appendCliLine(html, isCommand = false) {
+    if (!cliOutput) return;
+    const div = document.createElement("div");
+    if (isCommand) {
+      div.className = "cli-prompt-line";
+      div.innerHTML = `<span class="cli-prompt">visitor@zagor-vps:~$</span> ${html}`;
+    } else {
+      div.className = "cli-output-line";
+      div.innerHTML = html;
+    }
+    cliOutput.appendChild(div);
+    
+    // Auto scroll to bottom
+    const parent = cliOutput.closest(".terminal-code") || cliOutput.closest(".terminal-cli");
+    if (parent) {
+      parent.scrollTop = parent.scrollHeight;
+    }
+  }
+
+  if (cliInput) {
+    // Show welcome message
+    setTimeout(() => {
+      const welcome = getValue("cli.welcome", activeLanguage);
+      appendCliLine(`<span class="code-comment">${welcome}</span>`);
+    }, 100);
+
+    cliInput.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter") return;
+      const command = cliInput.value.trim();
+      cliInput.value = "";
+      if (!command) {
+        appendCliLine("", true);
+        return;
+      }
+
+      // Echo command
+      appendCliLine(escapeHtml(command), true);
+
+      const parts = command.toLowerCase().split(" ");
+      const cmd = parts[0];
+
+      if (cmd === "clear") {
+        cliOutput.innerHTML = "";
+      } else if (cmd === "help") {
+        const helpText = getValue("cli.help", activeLanguage);
+        appendCliLine(escapeHtml(helpText).replace(/\n/g, "<br>"));
+      } else if (cmd === "about") {
+        const aboutText = getValue("cli.aboutText", activeLanguage);
+        appendCliLine(escapeHtml(aboutText).replace(/\n/g, "<br>"));
+      } else if (cmd === "skills") {
+        const header = getValue("cli.skillsHeader", activeLanguage);
+        const frontend = getValue("cli.skillsGroupFrontend", activeLanguage);
+        const backend = getValue("cli.skillsGroupBackend", activeLanguage);
+        const db = getValue("cli.skillsGroupDB", activeLanguage);
+        const tools = getValue("cli.skillsGroupTools", activeLanguage);
+        const auto = getValue("cli.skillsGroupAuto", activeLanguage);
+        
+        let out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                  `  * ${escapeHtml(frontend)}<br>` +
+                  `  * ${escapeHtml(backend)}<br>` +
+                  `  * ${escapeHtml(db)}<br>` +
+                  `  * ${escapeHtml(tools)}<br>` +
+                  `  * ${escapeHtml(auto)}`;
+        appendCliLine(out);
+      } else if (cmd === "neofetch") {
+        const uptime = getUptimeString();
+        const status = getValue("hero.status", activeLanguage);
+        
+        const ascii = 
+          `   <span class="code-keyword">_____</span> <span class="code-def">_____</span>  <span class="code-string">_   _</span>    visitor@zagor-vps<br>` +
+          `  <span class="code-keyword">|__  /</span><span class="code-def">|  __ \\</span><span class="code-string">| | | |</span>   -----------------<br>` +
+          `    <span class="code-keyword">/ /</span> <span class="code-def">| |__) |</span><span class="code-string">| | | |</span>   OS: Ubuntu 24.04 LTS<br>` +
+          `   <span class="code-keyword">/ /_</span> <span class="code-def">|  ___/</span><span class="code-string">| |_| |</span>   Host: KVM VPS (1 CPU / 1GB)<br>` +
+          `  <span class="code-keyword">/____|</span><span class="code-def">|_|</span>     <span class="code-string">\\___/</span>    Kernel: Linux 6.8.0-generic<br>` +
+          `                         Uptime: ${uptime}<br>` +
+          `                         Shell: bash (custom js-sandbox)<br>` +
+          `                         Status: ${status}`;
+        appendCliLine(ascii);
+      } else {
+        const errorText = getValue("cli.unknown", activeLanguage).replace("{cmd}", `<strong>${escapeHtml(command)}</strong>`);
+        appendCliLine(`<span class="code-error">${errorText}</span>`);
+      }
+    });
+
+    // Keep focus when clicking inside terminal CLI area
+    if (terminalCli) {
+      terminalCli.addEventListener("click", function () {
+        cliInput.focus();
+      });
+    }
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
+
+  // Tab switching
+  const tabs = document.querySelectorAll(".terminal-tab");
+  const panelJson = document.getElementById("terminal-json");
+  const panelSh = document.getElementById("terminal-sh");
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(t => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
+      const target = tab.dataset.tab;
+      if (target === "json") {
+        if (panelJson) panelJson.style.display = "";
+        if (panelSh) panelSh.style.display = "none";
+        if (statusCenter) statusCenter.textContent = "profile.json [UTF-8]";
+      } else {
+        if (panelJson) panelJson.style.display = "none";
+        if (panelSh) panelSh.style.display = "flex";
+        if (statusCenter) statusCenter.textContent = "terminal.sh [BASH]";
+        if (cliInput) setTimeout(() => cliInput.focus(), 50);
+      }
+    });
+  });
+
+  // Clock tick
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // GitHub Commits Graph Calendar Generator
+  function initGithubGraph() {
+    const graphContainer = document.querySelector(".github-contrib-grid");
+    if (!graphContainer) return;
+
+    const totalSquares = 53 * 7;
+    let html = "";
+    const rand = Math.random;
+
+    for (let i = 0; i < totalSquares; i++) {
+      const dayOfWeek = i % 7;
+      let level = 0;
+      const roll = rand();
+
+      if (roll > 0.82) {
+        level = Math.floor(rand() * 4); // 0 to 3
+      } else if (roll > 0.55) {
+        level = Math.floor(rand() * 2); // 0 to 1
+      }
+
+      if ((dayOfWeek === 0 || dayOfWeek === 6) && rand() > 0.3) {
+        level = 0;
+      }
+
+      html += `<span class="contrib-square level-${level}"></span>`;
+    }
+
+    graphContainer.innerHTML = html;
+  }
+
+  initGithubGraph();
   revealSections();
 })();
