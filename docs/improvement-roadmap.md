@@ -333,6 +333,10 @@ copied
 - Feedback видимий і зрозумілий.
 - Немає помилки, якщо clipboard заблокований.
 
+### Статус
+
+Виконано. Біля email у секції `Контакти` додано кнопку `копіювати` / `copy`, `aria-live` feedback і fallback для копіювання, якщо Clipboard API недоступний.
+
 ## 7. Фаза 6: Компактніший Skills layout
 
 ### Пріоритет
@@ -375,6 +379,10 @@ Database   MySQL · SQLite
 - Вигляд ближчий до editorial tech portfolio.
 - Немає горизонтального scroll на 360px.
 
+### Статус
+
+Виконано. Секцію `Навички` перероблено з card-like `.skill-groups` у компактний `dl.skill-table` з editorial rows: категорія зліва, технології справа.
+
 ## 8. Фаза 7: Editorial design polish
 
 ### Пріоритет
@@ -409,6 +417,10 @@ P2
 - Основні CTA не губляться.
 - Візуальні акценти не сперечаються між собою.
 
+### Статус
+
+Виконано. `profile-panel` перероблено у definition rows, `focus-item` став текстовим блоком із тонкою верхньою лінією без тіней, GitHub CTA отримав легший surface без важкої тіні, а contact block оформлено як editorial band замість окремої картки.
+
 ## 9. Фаза 8: Мікроінтеракції
 
 ### Пріоритет
@@ -437,6 +449,10 @@ P2
 - Активний пункт nav відповідає поточній секції.
 - У `prefers-reduced-motion: reduce` немає зайвих анімацій.
 - Фокус-стани залишаються видимими.
+
+### Статус
+
+Виконано. Додано active nav link зі встановленням `aria-current="true"` через `IntersectionObserver`, м'який hover/focus/active state для terminal tabs, а copy email feedback і стабільні розміри theme/language controls збережено без layout shift.
 
 ## 10. Фаза 9: Light theme polish
 

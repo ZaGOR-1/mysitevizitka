@@ -222,28 +222,28 @@
             <h2 class="section-title" id="skills-title" data-i18n="skills.title">Навички</h2>
           </div>
           <div class="section-content">
-            <div class="skill-groups" aria-label="Навички за категоріями" data-i18n-aria-label="aria.skills">
-              <section class="skill-group" aria-labelledby="skill-frontend">
-                <h3 id="skill-frontend" data-i18n="skills.frontendTitle">Frontend</h3>
-                <p data-i18n="skills.frontendText">HTML, CSS, JavaScript</p>
-              </section>
-              <section class="skill-group" aria-labelledby="skill-backend">
-                <h3 id="skill-backend" data-i18n="skills.backendTitle">Backend</h3>
-                <p data-i18n="skills.backendText">PHP, Laravel, Symfony, Python</p>
-              </section>
-              <section class="skill-group" aria-labelledby="skill-databases">
-                <h3 id="skill-databases" data-i18n="skills.databasesTitle">Databases</h3>
-                <p data-i18n="skills.databasesText">MySQL, SQLite</p>
-              </section>
-              <section class="skill-group" aria-labelledby="skill-tools">
-                <h3 id="skill-tools" data-i18n="skills.toolsTitle">Tools & Server</h3>
-                <p data-i18n="skills.toolsText">Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache</p>
-              </section>
-              <section class="skill-group" aria-labelledby="skill-automation">
-                <h3 id="skill-automation" data-i18n="skills.automationTitle">Automation</h3>
-                <p data-i18n="skills.automationText">Telegram bots, scripts, small tools</p>
-              </section>
-            </div>
+            <dl class="skill-table" aria-label="Навички за категоріями" data-i18n-aria-label="aria.skills">
+              <div class="skill-row">
+                <dt data-i18n="skills.frontendTitle">Frontend</dt>
+                <dd data-i18n="skills.frontendText">HTML, CSS, JavaScript</dd>
+              </div>
+              <div class="skill-row">
+                <dt data-i18n="skills.backendTitle">Backend</dt>
+                <dd data-i18n="skills.backendText">PHP, Laravel, Symfony, Python</dd>
+              </div>
+              <div class="skill-row">
+                <dt data-i18n="skills.databasesTitle">Databases</dt>
+                <dd data-i18n="skills.databasesText">MySQL, SQLite</dd>
+              </div>
+              <div class="skill-row">
+                <dt data-i18n="skills.toolsTitle">Tools & Server</dt>
+                <dd data-i18n="skills.toolsText">Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache</dd>
+              </div>
+              <div class="skill-row">
+                <dt data-i18n="skills.automationTitle">Automation</dt>
+                <dd data-i18n="skills.automationText">Telegram bots, scripts, small tools</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
@@ -317,9 +317,13 @@
                     <dd data-i18n="contact.formatValue">remote / part-time learning collaboration</dd>
                   </div>
                 </dl>
-                <p>
+                <div class="email-row">
                   <a class="contact-email" href="mailto:ran31276@gmail.com">ran31276@gmail.com</a>
-                </p>
+                  <button class="copy-email-button" type="button" data-copy-email="ran31276@gmail.com" aria-label="Скопіювати email" data-i18n="contact.copyEmail" data-i18n-aria-label="aria.copyEmail">
+                    копіювати
+                  </button>
+                  <span class="copy-email-status" aria-live="polite" aria-atomic="true"></span>
+                </div>
                 <div class="contact-actions">
                   <a class="button button-primary" href="mailto:ran31276@gmail.com" data-i18n="contact.button">Написати мені</a>
                 </div>

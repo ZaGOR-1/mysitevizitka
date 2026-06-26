@@ -44,6 +44,7 @@
         githubList: "Що можна знайти на GitHub",
         githubSnapshot: "GitHub technical snapshot",
         availabilityStatus: "Доступність і формат співпраці",
+        copyEmail: "Скопіювати email",
         githubProfile: "GitHub профіль Дениса Загоровського",
         telegramProfile: "Telegram профіль Дениса Загоровського",
         linkedinProfile: "LinkedIn профіль Дениса Загоровського",
@@ -145,6 +146,9 @@
         locationValue: "Україна",
         formatLabel: "формат",
         formatValue: "remote / part-time learning collaboration",
+        copyEmail: "копіювати",
+        copiedEmail: "скопійовано",
+        copyEmailError: "не вдалося скопіювати",
         button: "Написати мені"
       },
       footer: {
@@ -214,6 +218,7 @@
         githubList: "What you can find on GitHub",
         githubSnapshot: "GitHub technical snapshot",
         availabilityStatus: "Availability and collaboration format",
+        copyEmail: "Copy email",
         githubProfile: "Denys Zahorovskyi GitHub profile",
         telegramProfile: "Denys Zahorovskyi Telegram profile",
         linkedinProfile: "Denys Zahorovskyi LinkedIn profile",
@@ -315,6 +320,9 @@
         locationValue: "Ukraine",
         formatLabel: "format",
         formatValue: "remote / part-time learning collaboration",
+        copyEmail: "copy",
+        copiedEmail: "copied",
+        copyEmailError: "could not copy",
         button: "Write to me"
       },
       footer: {
@@ -347,7 +355,10 @@
   const themeToggle = document.querySelector(".theme-toggle");
   const menuToggle = document.querySelector(".menu-toggle");
   const siteNav = document.querySelector(".site-nav");
+  const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
   const languageButtons = document.querySelectorAll("[data-language]");
+  const copyEmailButton = document.querySelector("[data-copy-email]");
+  const copyEmailStatus = document.querySelector(".copy-email-status");
   const yearNode = document.querySelector("[data-current-year]");
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
   const descriptionMeta = document.querySelector('meta[name="description"]');
@@ -361,6 +372,7 @@
   const themeStorageKey = "portfolio-theme";
   const languageStorageKey = "site-language";
   let activeLanguage = "uk";
+  let copyEmailTimer;
 
   root.classList.add("js");
 
@@ -496,6 +508,71 @@
     });
   }
 
+  function fallbackCopyText(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.setAttribute("readonly", "");
+    textArea.style.position = "fixed";
+    textArea.style.insetBlockStart = "-999px";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    let didCopy = false;
+    try {
+      didCopy = document.execCommand("copy");
+    } catch (error) {
+      didCopy = false;
+    }
+
+    textArea.remove();
+    return didCopy;
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+
+    return fallbackCopyText(text);
+  }
+
+  function updateCopyEmailFeedback(key) {
+    const message = getValue(key, activeLanguage) || "";
+    if (copyEmailButton) {
+      copyEmailButton.textContent = message;
+    }
+    if (copyEmailStatus) {
+      copyEmailStatus.textContent = message;
+    }
+
+    clearTimeout(copyEmailTimer);
+    copyEmailTimer = window.setTimeout(function () {
+      const resetLabel = getValue("contact.copyEmail", activeLanguage) || "";
+      if (copyEmailButton) {
+        copyEmailButton.textContent = resetLabel;
+      }
+      if (copyEmailStatus) {
+        copyEmailStatus.textContent = "";
+      }
+    }, 2200);
+  }
+
+  if (copyEmailButton) {
+    copyEmailButton.addEventListener("click", async function () {
+      const email = copyEmailButton.dataset.copyEmail;
+      if (!email) return;
+
+      try {
+        const didCopy = await copyText(email);
+        updateCopyEmailFeedback(didCopy ? "contact.copiedEmail" : "contact.copyEmailError");
+      } catch (error) {
+        updateCopyEmailFeedback("contact.copyEmailError");
+      }
+    });
+  }
+
   function setMenuOpen(isOpen) {
     if (!menuToggle || !siteNav) return;
 
@@ -536,6 +613,25 @@
     });
   }
 
+  function setActiveNavLink(hash) {
+    navLinks.forEach(function (link) {
+      const isActive = Boolean(hash) && link.getAttribute("href") === hash;
+      link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function isNavHash(hash) {
+    return navLinks.some(function (link) {
+      return link.getAttribute("href") === hash;
+    });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (event) {
       const href = link.getAttribute("href");
@@ -546,6 +642,9 @@
 
       event.preventDefault();
       setMenuOpen(false);
+      if (isNavHash(href)) {
+        setActiveNavLink(href);
+      }
 
       target.scrollIntoView({
         behavior: reduceMotionQuery.matches ? "auto" : "smooth",
@@ -777,9 +876,44 @@
     });
   });
 
+  function observeActiveNav() {
+    const navSections = navLinks
+      .map(function (link) {
+        const href = link.getAttribute("href");
+        return href ? document.querySelector(href) : null;
+      })
+      .filter(Boolean);
+
+    if (!navSections.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setActiveNavLink(window.location.hash && isNavHash(window.location.hash) ? window.location.hash : "");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActiveNavLink("#" + entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-32% 0px -54% 0px",
+        threshold: 0
+      }
+    );
+
+    navSections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
   // Clock tick
   setInterval(updateClock, 1000);
   updateClock();
 
+  observeActiveNav();
   revealSections();
 })();
