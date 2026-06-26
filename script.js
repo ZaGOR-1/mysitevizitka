@@ -171,7 +171,8 @@
         githubHeader: "=== GITHUB ===",
         githubProfile: "GitHub: https://github.com/ZaGOR-1",
         githubFocus: "Focus: learning projects, bots, scripts, server notes",
-        unknown: "Команда не знайдена: {cmd}. Введіть 'help' для довідки."
+        unknown: "Команда не знайдена: {cmd}. Введіть 'help' для довідки.",
+        suggestions: "Можливі команди: {commands}"
       }
     },
     en: {
@@ -345,7 +346,8 @@
         githubHeader: "=== GITHUB ===",
         githubProfile: "GitHub: https://github.com/ZaGOR-1",
         githubFocus: "Focus: learning projects, bots, scripts, server notes",
-        unknown: "Command not found: {cmd}. Type 'help' for help."
+        unknown: "Command not found: {cmd}. Type 'help' for help.",
+        suggestions: "Possible commands: {commands}"
       }
     }
   };
@@ -874,6 +876,10 @@
 
         if (matches.length === 1) {
           cliInput.value = matches[0];
+        } else if (matches.length > 1) {
+          const suggestionsTemplate = getValue("cli.suggestions", activeLanguage) || "Possible commands: {commands}";
+          const suggestionsText = suggestionsTemplate.replace("{commands}", matches.join("   "));
+          appendCliLine(escapeHtml(suggestionsText));
         }
       }
     });
@@ -985,14 +991,9 @@
   // Register Service Worker for offline access
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
-      navigator.serviceWorker.register("./sw.js").then(
-        function (registration) {
-          console.log("ServiceWorker registration successful with scope: ", registration.scope);
-        },
-        function (error) {
-          console.log("ServiceWorker registration failed: ", error);
-        }
-      );
+      navigator.serviceWorker.register("./sw.js").catch(function () {
+        // Offline cache is optional; the site stays fully usable without it.
+      });
     });
   }
 })();

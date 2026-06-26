@@ -17,8 +17,9 @@ server {
         try_files $uri $uri/ =404;
     }
 
-    # Заборонити доступ до service-файлів
-    location ~ /\.(git|agents) {
+    # Заборонити доступ до .git, .env та інших прихованих файлів.
+    # .well-known залишаємо для Let's Encrypt / Certbot.
+    location ~ /\.(?!well-known) {
         deny all;
         return 404;
     }

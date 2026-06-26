@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v2-2026-06-26";
+const CACHE_VERSION = "v4-2026-06-26";
 const CACHE_NAME = "portfolio-cache-" + CACHE_VERSION;
 
 const CORE_ASSETS = [
@@ -10,49 +10,7 @@ const CORE_ASSETS = [
   "./assets/favicon.svg",
   "./assets/og-image.png",
   "./assets/og-image.svg",
-  "./assets/fonts/fonts.css",
-  "./assets/fonts/jetbrains-mono-400-01.woff2",
-  "./assets/fonts/jetbrains-mono-400-02.woff2",
-  "./assets/fonts/jetbrains-mono-400-03.woff2",
-  "./assets/fonts/jetbrains-mono-400-04.woff2",
-  "./assets/fonts/jetbrains-mono-400-05.woff2",
-  "./assets/fonts/jetbrains-mono-400-06.woff2",
-  "./assets/fonts/jetbrains-mono-500-07.woff2",
-  "./assets/fonts/jetbrains-mono-500-08.woff2",
-  "./assets/fonts/jetbrains-mono-500-09.woff2",
-  "./assets/fonts/jetbrains-mono-500-10.woff2",
-  "./assets/fonts/jetbrains-mono-500-11.woff2",
-  "./assets/fonts/jetbrains-mono-500-12.woff2",
-  "./assets/fonts/jetbrains-mono-600-13.woff2",
-  "./assets/fonts/jetbrains-mono-600-14.woff2",
-  "./assets/fonts/jetbrains-mono-600-15.woff2",
-  "./assets/fonts/jetbrains-mono-600-16.woff2",
-  "./assets/fonts/jetbrains-mono-600-17.woff2",
-  "./assets/fonts/jetbrains-mono-600-18.woff2",
-  "./assets/fonts/manrope-400-19.woff2",
-  "./assets/fonts/manrope-400-20.woff2",
-  "./assets/fonts/manrope-400-21.woff2",
-  "./assets/fonts/manrope-400-22.woff2",
-  "./assets/fonts/manrope-400-23.woff2",
-  "./assets/fonts/manrope-400-24.woff2",
-  "./assets/fonts/manrope-500-25.woff2",
-  "./assets/fonts/manrope-500-26.woff2",
-  "./assets/fonts/manrope-500-27.woff2",
-  "./assets/fonts/manrope-500-28.woff2",
-  "./assets/fonts/manrope-500-29.woff2",
-  "./assets/fonts/manrope-500-30.woff2",
-  "./assets/fonts/manrope-600-31.woff2",
-  "./assets/fonts/manrope-600-32.woff2",
-  "./assets/fonts/manrope-600-33.woff2",
-  "./assets/fonts/manrope-600-34.woff2",
-  "./assets/fonts/manrope-600-35.woff2",
-  "./assets/fonts/manrope-600-36.woff2",
-  "./assets/fonts/manrope-700-37.woff2",
-  "./assets/fonts/manrope-700-38.woff2",
-  "./assets/fonts/manrope-700-39.woff2",
-  "./assets/fonts/manrope-700-40.woff2",
-  "./assets/fonts/manrope-700-41.woff2",
-  "./assets/fonts/manrope-700-42.woff2"
+  "./assets/fonts/fonts.css"
 ];
 
 function cacheResponse(request, response) {
@@ -66,6 +24,29 @@ function cacheResponse(request, response) {
   return response;
 }
 
+function offlineResponse(request) {
+  if (request.destination === "image") {
+    return new Response(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1" viewBox="0 0 1 1"></svg>',
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "image/svg+xml",
+          "Cache-Control": "no-store"
+        }
+      }
+    );
+  }
+
+  return new Response("", {
+    status: 503,
+    statusText: "Offline",
+    headers: {
+      "Cache-Control": "no-store"
+    }
+  });
+}
+
 function networkFirst(request, fallbackUrl) {
   return fetch(request)
     .then(function (response) {
@@ -73,7 +54,15 @@ function networkFirst(request, fallbackUrl) {
     })
     .catch(function () {
       return caches.match(request).then(function (cachedResponse) {
-        return cachedResponse || (fallbackUrl ? caches.match(fallbackUrl) : undefined);
+        if (cachedResponse) return cachedResponse;
+
+        if (fallbackUrl) {
+          return caches.match(fallbackUrl).then(function (fallbackResponse) {
+            return fallbackResponse || offlineResponse(request);
+          });
+        }
+
+        return offlineResponse(request);
       });
     });
 }
@@ -84,6 +73,8 @@ function cacheFirst(request) {
 
     return fetch(request).then(function (response) {
       return cacheResponse(request, response);
+    }).catch(function () {
+      return offlineResponse(request);
     });
   });
 }

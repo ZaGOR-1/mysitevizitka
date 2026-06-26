@@ -99,7 +99,7 @@ const developer = {
 
    * короткий текст, що мої навчальні, особисті та експериментальні проєкти можна знайти на GitHub
    * велика, але акуратна кнопка “Перейти на GitHub”
-   * місце для посилання `https://github.com/username`
+   * місце для посилання `https://github.com/ZaGOR-1`
    * невеликий опис типу: “Там я публікую навчальні проєкти, експерименти, вебзастосунки, Telegram-боти та інші розробки.”
 
    Не створюй окрему секцію з картками проєктів.
@@ -346,7 +346,7 @@ sudo apt update
 sudo apt install nginx git -y
 
 cd /var/www
-sudo git clone https://github.com/username/portfolio.git portfolio
+sudo git clone https://github.com/ZaGOR-1/mysitevizitka.git portfolio
 sudo chown -R www-data:www-data /var/www/portfolio
 ```
 
@@ -355,7 +355,7 @@ sudo chown -R www-data:www-data /var/www/portfolio
 ```nginx
 server {
     listen 80;
-    server_name example.com www.example.com;
+    server_name about.me.hotzagor.tech;
 
     root /var/www/portfolio;
     index index.html;
@@ -378,7 +378,7 @@ sudo systemctl reload nginx
 
 ```bash
 sudo apt install certbot python3-certbot-nginx -y
-sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot --nginx -d about.me.hotzagor.tech
 ```
 
 ## Якість

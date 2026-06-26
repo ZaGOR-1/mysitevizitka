@@ -43,10 +43,10 @@ portfolio/
    - позиціонування: початківець backend/frontend developer.
 
 2. Підготувати плейсхолдери для посилань:
-   - GitHub: `https://github.com/username`;
-   - Telegram: `https://t.me/username`;
-   - LinkedIn: `https://linkedin.com/in/username`;
-   - Email: `mailto:your.email@example.com`.
+   - GitHub: `https://github.com/ZaGOR-1`;
+   - Telegram: `https://t.me/Denis_Zagor`;
+   - LinkedIn: `https://www.linkedin.com/in/denis-zagorovskiy-a23b05410`;
+   - Email: `mailto:ran31276@gmail.com`.
 
 3. Підготувати короткий текст для секції About:
    - хто я;
@@ -218,7 +218,7 @@ CTA:
 Плейсхолдер посилання:
 
 ```text
-https://github.com/username
+https://github.com/ZaGOR-1
 ```
 
 #### Social Links / Соцмережі
@@ -226,10 +226,10 @@ https://github.com/username
 Плейсхолдери:
 
 ```text
-GitHub:   https://github.com/username
-Telegram: https://t.me/username
-LinkedIn: https://linkedin.com/in/username
-Email:    your.email@example.com
+GitHub:   https://github.com/ZaGOR-1
+Telegram: https://t.me/Denis_Zagor
+LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410
+Email:    ran31276@gmail.com
 ```
 
 #### Contact / Контакти
@@ -243,7 +243,7 @@ Email:    your.email@example.com
 Email-плейсхолдер:
 
 ```text
-your.email@example.com
+ran31276@gmail.com
 ```
 
 CTA:
@@ -255,7 +255,7 @@ CTA:
 Mailto:
 
 ```text
-mailto:your.email@example.com
+mailto:ran31276@gmail.com
 ```
 
 #### Footer
@@ -299,11 +299,11 @@ Open Graph description:
 
 ```text
 Ім'я: Denis
-GitHub username: username
-Telegram username: username
-LinkedIn username: username
-Email: your.email@example.com
-Домен для деплою: example.com
+GitHub акаунт: ZaGOR-1
+Telegram акаунт: Denis_Zagor
+LinkedIn profile: denis-zagorovskiy-a23b05410
+Email: ran31276@gmail.com
+Домен для деплою: about.me.hotzagor.tech
 ```
 
 ### Перевірка Фази 1
@@ -589,7 +589,7 @@ Responsive tag cloud / badges
 +-----------------------------------------------+
 | 03 / GitHub                                   |
 | Text about works on GitHub                    |
-| github.com/username                           |
+| github.com/ZaGOR-1                           |
 | [Перейти на GitHub]                           |
 +-----------------------------------------------+
 ```
@@ -637,7 +637,7 @@ email
 Рішення:
 
 - contact має завершувати основний сценарій сторінки;
-- кнопка `Написати мені` веде на `mailto:your.email@example.com`;
+- кнопка `Написати мені` веде на `mailto:ran31276@gmail.com`;
 - email має бути видимим текстом, щоб його можна було скопіювати.
 
 ### Footer
@@ -1078,7 +1078,7 @@ og:image
 og:locale
 ```
 
-`og:image` поки вказує на плейсхолдер `https://example.com/assets/og-image.png`, який можна буде замінити після створення реального OG-зображення або домену.
+`og:image` поки вказує на плейсхолдер `https://about.me.hotzagor.tech/assets/og-image.png`, який можна буде замінити після створення реального OG-зображення або домену.
 
 #### Header / Navigation
 
@@ -1153,7 +1153,7 @@ Social Links
 Додано GitHub-блок як головний CTA:
 
 - текст про навчальні, особисті та експериментальні проєкти;
-- плейсхолдер `github.com/username`;
+- плейсхолдер `github.com/ZaGOR-1`;
 - кнопка `Перейти на GitHub`;
 - немає окремих карток проєктів.
 
@@ -1681,7 +1681,7 @@ sudo apt update
 sudo apt install nginx git -y
 
 cd /var/www
-sudo git clone https://github.com/username/portfolio.git portfolio
+sudo git clone https://github.com/ZaGOR-1/mysitevizitka.git portfolio
 sudo chown -R www-data:www-data /var/www/portfolio
 ```
 
@@ -1690,7 +1690,7 @@ sudo chown -R www-data:www-data /var/www/portfolio
 ```nginx
 server {
     listen 80;
-    server_name example.com www.example.com;
+    server_name about.me.hotzagor.tech;
 
     root /var/www/portfolio;
     index index.html;
@@ -1713,7 +1713,7 @@ sudo systemctl reload nginx
 
 ```bash
 sudo apt install certbot python3-certbot-nginx -y
-sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot --nginx -d about.me.hotzagor.tech
 ```
 
 10. Як оновлювати сайт через Git:
@@ -1863,7 +1863,7 @@ sudo systemctl reload nginx
 Було:
 
 ```html
-<meta property="og:image" content="https://example.com/assets/og-image.png">
+<meta property="og:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
 ```
 
 Файлу `assets/og-image.png` не існувало.
@@ -1871,7 +1871,7 @@ sudo systemctl reload nginx
 Зроблено:
 
 ```html
-<meta property="og:image" content="https://example.com/assets/og-image.svg">
+<meta property="og:image" content="https://about.me.hotzagor.tech/assets/og-image.svg">
 ```
 
 Додано файл:

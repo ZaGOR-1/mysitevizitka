@@ -6,8 +6,8 @@ This repository is a lightweight, fully static one-page developer portfolio / pe
 
 Primary source documents:
 
-- `promt.md` — main product/design prompt and final requirements.
-- `plan.md` — implementation plan and checklist.
+- `docs/promt.md` — main product/design prompt and final requirements.
+- `docs/plan.md` — implementation plan and checklist.
 
 Before making changes, read both files and follow them unless the user explicitly gives newer instructions.
 
@@ -170,4 +170,4 @@ README should explain:
 - Keep the code easy for a beginner to edit manually.
 - Do not over-engineer.
 - Do not add dependencies to solve problems that plain HTML/CSS/JS can solve.
-- When uncertain, preserve the requirements from `promt.md` and `plan.md`.
+- When uncertain, preserve the requirements from `docs/promt.md` and `docs/plan.md`.
