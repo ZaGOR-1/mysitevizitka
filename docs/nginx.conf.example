@@ -1,0 +1,52 @@
+# Приклад Nginx конфігурації для портфоліо-сайту
+# Скопіюйте файл в /etc/nginx/sites-available/portfolio
+# і створіть символічне посилання:
+#   sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+#   sudo nginx -t
+#   sudo systemctl reload nginx
+
+server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    root /var/www/portfolio;
+    index index.html;
+
+    # Основна локація
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Заборонити доступ до service-файлів
+    location ~ /\.(git|agents) {
+        deny all;
+        return 404;
+    }
+
+    location ~* ^/(AGENTS\.md|README\.md|docs/|\.gitignore)$ {
+        deny all;
+        return 404;
+    }
+
+    # Кеш для статичних ресурсів
+    location ~* \.(css|js|svg|png|ico|webmanifest)$ {
+        expires 7d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Заголовки безпеки
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Gzip
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml application/xml;
+    gzip_min_length 256;
+}
+
+# Після отримання HTTPS через Let's Encrypt:
+#   sudo apt install certbot python3-certbot-nginx -y
+#   sudo certbot --nginx -d example.com -d www.example.com
+#
+# Certbot автоматично додасть SSL-блок і redirect з HTTP на HTTPS.

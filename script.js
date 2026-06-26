@@ -914,6 +914,24 @@
   setInterval(updateClock, 1000);
   updateClock();
 
+  // Scroll progress indicator
+  var scrollBar = document.querySelector(".scroll-progress");
+  if (scrollBar) {
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          scrollBar.style.width = progress + "%";
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   observeActiveNav();
   revealSections();
 })();
