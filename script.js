@@ -476,7 +476,7 @@
 
   function updateThemeMeta(theme) {
     if (!themeColorMeta) return;
-    themeColorMeta.setAttribute("content", theme === "light" ? "#f6f8fb" : "#0d0f12");
+    themeColorMeta.setAttribute("content", theme === "light" ? "#f5f7f4" : "#0d0f12");
   }
 
   function applyTheme(theme) {

@@ -7,9 +7,9 @@
 
 server {
     listen 80;
-    server_name example.com www.example.com;
+    server_name about.me.hotzagor.tech;
 
-    root /var/www/portfolio;
+    root /var/www/mysitevizitka;
     index index.html;
 
     # Основна локація
@@ -28,17 +28,25 @@ server {
         return 404;
     }
 
-    # Кеш для статичних ресурсів
-    location ~* \.(css|js|svg|png|ico|webmanifest)$ {
-        expires 7d;
-        add_header Cache-Control "public, immutable";
+    # HTML, CSS, JS і Service Worker мають швидко оновлюватися після деплою
+    location ~* \.(html|css|js|webmanifest)$ {
+        expires -1;
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+
+    # Кеш для версіонованих або рідко змінюваних статичних ресурсів
+    location ~* \.(svg|png|ico|woff|woff2)$ {
+        expires 30d;
+        add_header Cache-Control "public";
+        try_files $uri =404;
     }
 
     # Заголовки безпеки
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self';" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self';" always;
 
     # Gzip
     gzip on;
@@ -48,6 +56,6 @@ server {
 
 # Після отримання HTTPS через Let's Encrypt:
 #   sudo apt install certbot python3-certbot-nginx -y
-#   sudo certbot --nginx -d example.com -d www.example.com
+#   sudo certbot --nginx -d about.me.hotzagor.tech
 #
 # Certbot автоматично додасть SSL-блок і redirect з HTTP на HTTPS.

@@ -11,11 +11,23 @@
 ├── index.html
 ├── styles.css
 ├── script.js
+├── sw.js
+├── robots.txt
+├── sitemap.xml
+├── site.webmanifest
 ├── assets/
+│   ├── fonts/
+│   │   ├── fonts.css
+│   │   └── *.woff2
 │   ├── favicon.svg
 │   ├── og-image.svg
 │   ├── og-image.png
 │   └── README.md
+├── docs/
+│   ├── improvement-roadmap.md
+│   ├── nginx.conf.example
+│   ├── plan.md
+│   └── promt.md
 └── README.md
 ```
 
@@ -46,7 +58,7 @@ python3 -m http.server 8000
 
 ## Як змінити персональні дані
 
-Усі основні тексти знаходяться в `index.html`.
+Основні fallback-тексти знаходяться в `index.html`, а актуальні UA/EN тексти для перемикача мови знаходяться в `script.js` в об'єкті `translations`.
 
 ### Ім'я
 
@@ -119,13 +131,15 @@ python3 -m http.server 8000
 Навички згруповані за категоріями:
 
 ```html
-<section class="skill-group" aria-labelledby="skill-backend">
-  <h3 id="skill-backend">Backend</h3>
-  <p>PHP, Laravel, Symfony, Python</p>
-</section>
+<dl class="skill-table">
+  <div class="skill-row">
+    <dt>Backend</dt>
+    <dd>PHP, Laravel, Symfony, Python, C, C#</dd>
+  </div>
+</dl>
 ```
 
-Можна змінювати назви категорій, список технологій або додавати нові `.skill-group`.
+Можна змінювати назви категорій, список технологій або додавати нові `.skill-row`.
 
 ### GitHub
 
@@ -197,11 +211,11 @@ mailto:ran31276@gmail.com
 
 ```css
 html[data-theme="light"] {
-  --color-bg: #f6f8fb;
-  --color-surface: #ffffff;
-  --color-text: #15181d;
-  --color-muted: #5f6874;
-  --color-accent: #08756e;
+  --color-bg: #f5f7f4;
+  --color-surface: #fafcf9;
+  --color-text: #0f172a;
+  --color-muted: #475569;
+  --color-accent: #0f766e;
 }
 ```
 
@@ -217,20 +231,26 @@ html[data-theme="light"] {
 
 ### Шрифти
 
-Шрифти підключені через Google Fonts у `index.html`:
+Шрифти підключені локально з `assets/fonts/`:
 
 - `Manrope` з вагами `400`, `500`, `600`, `700`;
 - `JetBrains Mono` з вагами `400`, `500`, `600`;
-- `display=swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження.
+- `font-display: swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження.
 
-У `styles.css` вони задані через CSS-змінні:
+У `styles.css` на початку підключено локальний файл:
+
+```css
+@import url("assets/fonts/fonts.css");
+```
+
+Далі шрифти задані через CSS-змінні:
 
 ```css
 --font-sans: "Manrope", "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 ```
 
-Fallback-шрифти залишені на випадок, якщо Google Fonts не завантажаться.
+Fallback-шрифти залишені на випадок, якщо локальний файл шрифту не завантажиться.
 
 ### Відступи та radius
 
@@ -259,8 +279,27 @@ Fallback-шрифти залишені на випадок, якщо Google Font
 - smooth scroll;
 - reveal animation;
 - автоматичний рік у footer.
+- copy email button;
+- terminal CLI;
+- active nav link;
+- scroll progress;
+- service worker для offline-cache.
 
 Сайт залишається читабельним навіть якщо JavaScript не завантажиться.
+
+## Service Worker і cache
+
+Файл `sw.js` додає базову offline-підтримку. HTML, CSS, JS, manifest і сам service worker використовують network-first strategy, щоб після деплою користувачі швидше отримували актуальні `styles.css` і `script.js`.
+
+Шрифти й зображення кешуються cache-first, бо вони змінюються рідко.
+
+Після зміни cache strategy або списку core assets онови:
+
+```js
+const CACHE_VERSION = "v2-2026-06-26";
+```
+
+Це змусить браузер прибрати старий cache під час `activate`.
 
 ## Мультимовність
 
@@ -338,6 +377,10 @@ ls -la /var/www/mysitevizitka
 index.html
 styles.css
 script.js
+sw.js
+robots.txt
+sitemap.xml
+site.webmanifest
 assets/
 ```
 
@@ -385,16 +428,16 @@ server {
         deny all;
     }
 
-    # Кеш для статичних assets
-    location ~* \.(png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)$ {
-        expires 30d;
-        add_header Cache-Control "public";
+    # HTML, CSS, JS і Service Worker мають швидко оновлюватися після деплою
+    location ~* \.(html|css|js|webmanifest)$ {
+        expires -1;
+        add_header Cache-Control "no-cache";
         try_files $uri =404;
     }
 
-    # CSS/JS кешувати коротше, бо вони можуть часто оновлюватися
-    location ~* \.(css|js)$ {
-        expires 1h;
+    # Кеш для рідко змінюваних статичних assets
+    location ~* \.(png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)$ {
+        expires 30d;
         add_header Cache-Control "public";
         try_files $uri =404;
     }
@@ -535,6 +578,8 @@ sudo find /var/www/mysitevizitka -type f -exec chmod 644 {} \;
 - `https://about.me.hotzagor.tech`
 - `about.me.hotzagor.tech`
 - `assets/og-image.png`, якщо зміниш Open Graph image
+- `assets/fonts/`, якщо змінюєш шрифти
+- `CACHE_VERSION` у `sw.js`, якщо змінюєш cache strategy або core assets
 
 ## Технічні нотатки
 
