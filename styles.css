@@ -817,9 +817,22 @@ html[data-theme="light"] .terminal-card {
 .cli-output-line {
   margin-bottom: var(--space-xs);
   white-space: pre-wrap;
+  animation: cliFadeIn 0.18s ease-out forwards;
 }
 .cli-prompt-line {
   margin-bottom: var(--space-xs);
+  animation: cliFadeIn 0.18s ease-out forwards;
+}
+
+@keyframes cliFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .cli-prompt {
   color: var(--color-accent-strong);
@@ -1715,5 +1728,236 @@ html[data-theme="light"] .code-string {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+@media print {
+  /* Reset background and colors for printing */
+  :root,
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Hide interactive, layout and dynamic elements */
+  .site-header,
+  .site-footer,
+  .theme-toggle,
+  .menu-toggle,
+  .language-switch,
+  .scroll-progress,
+  .skip-link,
+  .terminal-card,
+  .button,
+  .copy-email-button,
+  .copy-email-status,
+  .status-pill,
+  .reveal {
+    display: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Remove scrollbars, transitions, shadows, and grids background */
+  body::before,
+  .hero::before,
+  .hero::after,
+  .section::before,
+  .section::after {
+    display: none !important;
+  }
+
+  /* Force display of hidden items that might be hidden by reveal script (fallback) */
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Structural print layout adjustments */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .section {
+    padding-block: 1.25rem !important;
+    border-top: 1px solid #dddddd !important;
+    background-image: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  .section-grid,
+  .hero-layout,
+  .profile-panel div,
+  .skill-row,
+  .github-snapshot div,
+  .availability-list div {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .section-heading {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .section-title {
+    font-size: 15pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  .section-number {
+    display: none !important;
+  }
+
+  .hero {
+    padding-block: 1rem 1.5rem !important;
+  }
+
+  .hero h1 {
+    font-size: 24pt !important;
+    color: #000000 !important;
+  }
+
+  .hero-lead {
+    font-size: 13pt !important;
+    color: #333333 !important;
+  }
+
+  .hero-note {
+    font-size: 11pt !important;
+    color: #555555 !important;
+  }
+
+  /* Format lists and rows */
+  .quick-facts,
+  .tag-list,
+  .github-list {
+    display: block !important;
+    margin: 0.5rem 0 0 !important;
+  }
+
+  .quick-facts li,
+  .tag,
+  .github-list li {
+    display: inline-block !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-right: 0.75rem !important;
+    color: #333333 !important;
+  }
+
+  .quick-facts li::before,
+  .tag::before,
+  .github-list li::before {
+    content: "• " !important;
+    color: #000000 !important;
+  }
+
+  .focus-grid {
+    display: block !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .focus-item {
+    border-top: none !important;
+    padding: 0.25rem 0 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .focus-item::before {
+    display: none !important;
+  }
+
+  .focus-item h3 {
+    margin: 0 0 0.15rem !important;
+    font-size: 11pt !important;
+    font-weight: bold !important;
+  }
+
+  /* Table-like structures formatting */
+  .profile-panel,
+  .skill-table,
+  .github-snapshot,
+  .availability-list {
+    border: none !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .profile-panel div,
+  .skill-row,
+  .github-snapshot div,
+  .availability-list div {
+    border: none !important;
+    padding-block: 0.22rem !important;
+    display: flex !important;
+  }
+
+  .profile-panel dt,
+  .skill-row dt,
+  .github-snapshot dt,
+  .availability-list dt {
+    width: 140px !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  .profile-panel dd,
+  .skill-row dd,
+  .github-snapshot dd,
+  .availability-list dd {
+    flex: 1 !important;
+    color: #333333 !important;
+  }
+
+  .learning-now {
+    display: none !important;
+  }
+
+  /* Contact and email formatting */
+  .contact-panel {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .email-row {
+    margin-top: 0.5rem !important;
+  }
+
+  .contact-email {
+    font-weight: bold !important;
+    text-decoration: underline !important;
+    color: #000000 !important;
+  }
+
+  .social-links {
+    display: block !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .social-links li {
+    display: inline-block !important;
+    margin-right: 1.25rem !important;
+  }
+
+  .social-links a {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  .social-links a::before,
+  .social-links a::after {
+    display: none !important;
   }
 }

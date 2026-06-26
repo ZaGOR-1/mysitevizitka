@@ -728,6 +728,11 @@
   const cliInput = document.querySelector(".cli-input");
   const terminalCli = document.getElementById("terminal-sh");
 
+  const commandHistory = [];
+  let historyIndex = 0;
+  let temporaryInput = "";
+  const availableCommands = ["help", "neofetch", "skills", "contact", "github", "clear", "about"];
+
   function appendCliLine(html, isCommand = false) {
     if (!cliOutput) return;
     const div = document.createElement("div");
@@ -755,82 +760,124 @@
     }, 100);
 
     cliInput.addEventListener("keydown", function (event) {
-      if (event.key !== "Enter") return;
-      const command = cliInput.value.trim();
-      cliInput.value = "";
-      if (!command) {
-        appendCliLine("", true);
-        return;
-      }
+      if (event.key === "Enter") {
+        const command = cliInput.value.trim();
+        cliInput.value = "";
+        if (!command) {
+          appendCliLine("", true);
+          return;
+        }
 
-      // Echo command
-      appendCliLine(escapeHtml(command), true);
+        // Echo command
+        appendCliLine(escapeHtml(command), true);
 
-      const parts = command.toLowerCase().split(" ");
-      const cmd = parts[0];
+        // Add to history
+        if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== command) {
+          commandHistory.push(command);
+        }
+        historyIndex = commandHistory.length;
+        temporaryInput = "";
 
-      if (cmd === "clear") {
-        cliOutput.innerHTML = "";
-      } else if (cmd === "help") {
-        const helpText = getValue("cli.help", activeLanguage);
-        appendCliLine(escapeHtml(helpText).replace(/\n/g, "<br>"));
-      } else if (cmd === "about") {
-        const aboutText = getValue("cli.aboutText", activeLanguage);
-        appendCliLine(escapeHtml(aboutText).replace(/\n/g, "<br>"));
-      } else if (cmd === "skills") {
-        const header = getValue("cli.skillsHeader", activeLanguage);
-        const frontend = getValue("cli.skillsGroupFrontend", activeLanguage);
-        const backend = getValue("cli.skillsGroupBackend", activeLanguage);
-        const db = getValue("cli.skillsGroupDB", activeLanguage);
-        const tools = getValue("cli.skillsGroupTools", activeLanguage);
-        const auto = getValue("cli.skillsGroupAuto", activeLanguage);
-        
-        let out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
-                  `  * ${escapeHtml(frontend)}<br>` +
-                  `  * ${escapeHtml(backend)}<br>` +
-                  `  * ${escapeHtml(db)}<br>` +
-                  `  * ${escapeHtml(tools)}<br>` +
-                  `  * ${escapeHtml(auto)}`;
-        appendCliLine(out);
-      } else if (cmd === "contact") {
-        const header = getValue("cli.contactHeader", activeLanguage);
-        const email = getValue("cli.contactEmail", activeLanguage);
-        const telegram = getValue("cli.contactTelegram", activeLanguage);
-        const linkedIn = getValue("cli.contactLinkedIn", activeLanguage);
+        const parts = command.toLowerCase().split(" ");
+        const cmd = parts[0];
 
-        const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
-                    `  * ${formatCliLink(email, "mailto:ran31276@gmail.com")}<br>` +
-                    `  * ${formatCliLink(telegram, "https://t.me/Denis_Zagor")}<br>` +
-                    `  * ${formatCliLink(linkedIn, "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410")}`;
-        appendCliLine(out);
-      } else if (cmd === "github") {
-        const header = getValue("cli.githubHeader", activeLanguage);
-        const profile = getValue("cli.githubProfile", activeLanguage);
-        const focus = getValue("cli.githubFocus", activeLanguage);
+        if (cmd === "clear") {
+          cliOutput.innerHTML = "";
+        } else if (cmd === "help") {
+          const helpText = getValue("cli.help", activeLanguage);
+          appendCliLine(escapeHtml(helpText).replace(/\n/g, "<br>"));
+        } else if (cmd === "about") {
+          const aboutText = getValue("cli.aboutText", activeLanguage);
+          appendCliLine(escapeHtml(aboutText).replace(/\n/g, "<br>"));
+        } else if (cmd === "skills") {
+          const header = getValue("cli.skillsHeader", activeLanguage);
+          const frontend = getValue("cli.skillsGroupFrontend", activeLanguage);
+          const backend = getValue("cli.skillsGroupBackend", activeLanguage);
+          const db = getValue("cli.skillsGroupDB", activeLanguage);
+          const tools = getValue("cli.skillsGroupTools", activeLanguage);
+          const auto = getValue("cli.skillsGroupAuto", activeLanguage);
+          
+          let out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                    `  * ${escapeHtml(frontend)}<br>` +
+                    `  * ${escapeHtml(backend)}<br>` +
+                    `  * ${escapeHtml(db)}<br>` +
+                    `  * ${escapeHtml(tools)}<br>` +
+                    `  * ${escapeHtml(auto)}`;
+          appendCliLine(out);
+        } else if (cmd === "contact") {
+          const header = getValue("cli.contactHeader", activeLanguage);
+          const email = getValue("cli.contactEmail", activeLanguage);
+          const telegram = getValue("cli.contactTelegram", activeLanguage);
+          const linkedIn = getValue("cli.contactLinkedIn", activeLanguage);
 
-        const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
-                    `  * ${formatCliLink(profile, "https://github.com/ZaGOR-1")}<br>` +
-                    `  * ${escapeHtml(focus)}`;
-        appendCliLine(out);
-      } else if (cmd === "neofetch") {
-        const uptime = getUptimeString();
-        const status = getValue("hero.status", activeLanguage);
-        
-        const ascii = 
-          `   <span class="code-keyword">_____</span> <span class="code-def">_____</span>  <span class="code-string">_   _</span>    visitor@zagor-vps<br>` +
-          `  <span class="code-keyword">|__  /</span><span class="code-def">|  __ \\</span><span class="code-string">| | | |</span>   -----------------<br>` +
-          `    <span class="code-keyword">/ /</span> <span class="code-def">| |__) |</span><span class="code-string">| | | |</span>   OS: Ubuntu 24.04 LTS<br>` +
-          `   <span class="code-keyword">/ /_</span> <span class="code-def">|  ___/</span><span class="code-string">| |_| |</span>   Host: KVM VPS (1 CPU / 1GB)<br>` +
-          `  <span class="code-keyword">/____|</span><span class="code-def">|_|</span>     <span class="code-string">\\___/</span>    Kernel: Linux 6.8.0-generic<br>` +
-          `                         Uptime: ${uptime}<br>` +
-          `                         Shell: bash (custom js-sandbox)<br>` +
-          `                         Status: ${status}`;
-        appendCliLine(ascii);
-      } else {
-        const errorText = getValue("cli.unknown", activeLanguage).replace("{cmd}", `<strong>${escapeHtml(command)}</strong>`);
-        appendCliLine(`<span class="code-error">${errorText}</span>`);
+          const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                      `  * ${formatCliLink(email, "mailto:ran31276@gmail.com")}<br>` +
+                      `  * ${formatCliLink(telegram, "https://t.me/Denis_Zagor")}<br>` +
+                      `  * ${formatCliLink(linkedIn, "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410")}`;
+          appendCliLine(out);
+        } else if (cmd === "github") {
+          const header = getValue("cli.githubHeader", activeLanguage);
+          const profile = getValue("cli.githubProfile", activeLanguage);
+          const focus = getValue("cli.githubFocus", activeLanguage);
+
+          const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                      `  * ${formatCliLink(profile, "https://github.com/ZaGOR-1")}<br>` +
+                      `  * ${escapeHtml(focus)}`;
+          appendCliLine(out);
+        } else if (cmd === "neofetch") {
+          const uptime = getUptimeString();
+          const status = getValue("hero.status", activeLanguage);
+          
+          const ascii = 
+            `   <span class="code-keyword">_____</span> <span class="code-def">_____</span>  <span class="code-string">_   _</span>    visitor@zagor-vps<br>` +
+            `  <span class="code-keyword">|__  /</span><span class="code-def">|  __ \\</span><span class="code-string">| | | |</span>   -----------------<br>` +
+            `    <span class="code-keyword">/ /</span> <span class="code-def">| |__) |</span><span class="code-string">| | | |</span>   OS: Ubuntu 24.04 LTS<br>` +
+            `   <span class="code-keyword">/ /_</span> <span class="code-def">|  ___/</span><span class="code-string">| |_| |</span>   Host: KVM VPS (1 CPU / 1GB)<br>` +
+            `  <span class="code-keyword">/____|</span><span class="code-def">|_|</span>     <span class="code-string">\\___/</span>    Kernel: Linux 6.8.0-generic<br>` +
+            `                         Uptime: ${uptime}<br>` +
+            `                         Shell: bash (custom js-sandbox)<br>` +
+            `                         Status: ${status}`;
+          appendCliLine(ascii);
+        } else {
+          const errorText = getValue("cli.unknown", activeLanguage).replace("{cmd}", `<strong>${escapeHtml(command)}</strong>`);
+          appendCliLine(`<span class="code-error">${errorText}</span>`);
+        }
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (commandHistory.length === 0) return;
+        if (historyIndex === commandHistory.length) {
+          temporaryInput = cliInput.value;
+        }
+        if (historyIndex > 0) {
+          historyIndex--;
+          cliInput.value = commandHistory[historyIndex];
+        }
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        if (commandHistory.length === 0) return;
+        if (historyIndex < commandHistory.length) {
+          historyIndex++;
+          if (historyIndex === commandHistory.length) {
+            cliInput.value = temporaryInput;
+          } else {
+            cliInput.value = commandHistory[historyIndex];
+          }
+        }
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        const currentInput = cliInput.value.trim().toLowerCase();
+        if (!currentInput) return;
+
+        const matches = availableCommands.filter(function (cmd) {
+          return cmd.startsWith(currentInput);
+        });
+
+        if (matches.length === 1) {
+          cliInput.value = matches[0];
+        }
       }
     });
+
 
     // Keep focus when clicking inside terminal CLI area
     if (terminalCli) {
@@ -934,4 +981,18 @@
 
   observeActiveNav();
   revealSections();
+
+  // Register Service Worker for offline access
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js").then(
+        function (registration) {
+          console.log("ServiceWorker registration successful with scope: ", registration.scope);
+        },
+        function (error) {
+          console.log("ServiceWorker registration failed: ", error);
+        }
+      );
+    });
+  }
 })();
