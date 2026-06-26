@@ -12,7 +12,8 @@
         toContent: "Перейти до контенту"
       },
       site: {
-        name: "Денис Загоровський"
+        name: "Денис Загоровський",
+        shortName: "Денис"
       },
       language: {
         ukLabel: "Перемкнути мову на українську",
@@ -33,11 +34,16 @@
         quickFacts: "Короткі факти профілю",
         primaryActions: "Основні дії",
         terminal: "Короткий профіль у форматі коду",
+        terminalTabs: "Перемикач термінального блоку",
+        terminalInput: "Ввід команди в терміналі",
         interests: "Напрями інтересу",
-        quickProfile: "Quick profile",
+        quickProfile: "Короткий профіль",
+        learningNow: "Що зараз вчу та практикую",
         focusGrid: "Поточні напрями розвитку",
         skills: "Навички за категоріями",
         githubList: "Що можна знайти на GitHub",
+        githubSnapshot: "GitHub technical snapshot",
+        availabilityStatus: "Доступність і формат співпраці",
         githubProfile: "GitHub профіль Дениса Загоровського",
         telegramProfile: "Telegram профіль Дениса Загоровського",
         linkedinProfile: "LinkedIn профіль Дениса Загоровського",
@@ -82,6 +88,11 @@
         number: "02 / Фокус",
         title: "Зараз у фокусі",
         intro: "Найбільше уваги зараз йде в практику: backend-основи, серверне середовище й маленькі інструменти, які можна довести до робочого стану.",
+        learningTitle: "Зараз вчу / практикую",
+        learningLaravel: "Laravel basics",
+        learningLinux: "Linux deploy",
+        learningBots: "Telegram bots",
+        learningSql: "SQL practice",
         backendLabel: "Backend-основи",
         backendTitle: "PHP, Laravel, Symfony, APIs",
         backendText: "Розбираюся з логікою застосунків, маршрутами, базами даних і простими API.",
@@ -110,12 +121,17 @@
         number: "04 / GitHub",
         title: "Мої роботи",
         text: "Навчальні, особисті та експериментальні проєкти я збираю на GitHub. Там можна знайти вебзастосунки, невеликі backend-експерименти, Telegram-боти, автоматизацію та інші речі, які я поступово доробляю й покращую.",
-        itemStudent: "student projects",
-        itemWeb: "web applications",
-        itemBackend: "backend experiments",
+        itemStudent: "навчальні проєкти",
+        itemWeb: "вебзастосунки",
+        itemBackend: "backend-експерименти",
         itemBots: "Telegram bots",
-        itemAutomation: "automation scripts",
-        itemNotes: "Linux/VPS notes",
+        itemAutomation: "скрипти автоматизації",
+        itemNotes: "Linux/VPS нотатки",
+        snapshotProfileLabel: "profile",
+        snapshotContentLabel: "content",
+        snapshotContentValue: "навчальні проєкти · bots · scripts · server notes",
+        snapshotFocusLabel: "останній фокус",
+        snapshotFocusValue: "web/backend/linux",
         button: "Перейти на GitHub"
       },
       contact: {
@@ -123,13 +139,19 @@
         title: "Контакти / Посилання",
         status: "статус: навчаюсь / відкритий до практики",
         text: "Відкритий до навчальних проєктів, практики, стажування або невеликої співпраці, де можна попрацювати з реальними задачами й вирости як розробник.",
+        openToLabel: "відкритий до",
+        openToValue: "практики / стажування / навчальних проєктів",
+        locationLabel: "локація",
+        locationValue: "Україна",
+        formatLabel: "формат",
+        formatValue: "remote / part-time learning collaboration",
         button: "Написати мені"
       },
       footer: {
         note: "зроблено на html/css/js · розміщено на vps"
       },
       cli: {
-        help: "Доступні команди:\n  neofetch  - інформація про систему\n  skills    - список моїх навичок\n  about     - інформація про мене\n  clear     - очистити термінал\n  help      - показати цю довідку",
+        help: "Доступні команди:\n  neofetch  - інформація про систему\n  skills    - список моїх навичок\n  about     - інформація про мене\n  contact   - контакти для зв'язку\n  github    - GitHub і фокус репозиторіїв\n  clear     - очистити термінал\n  help      - показати цю довідку",
         welcome: "Введіть 'help' для списку команд.",
         skillsHeader: "=== МОЇ НАВИЧКИ ===",
         skillsGroupFrontend: "Frontend: HTML, CSS, JavaScript",
@@ -138,6 +160,13 @@
         skillsGroupTools: "Tools: Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache",
         skillsGroupAuto: "Automation: Telegram bots, scripts",
         aboutText: "Я студент 2 курсу спеціальності 121 \"Інженерія програмного забезпечення\" у Житомирській політехніці.\nВивчаю backend, роботу з базами даних, Linux-середовище й автоматизацію.",
+        contactHeader: "=== КОНТАКТИ ===",
+        contactEmail: "Email: ran31276@gmail.com",
+        contactTelegram: "Telegram: https://t.me/Denis_Zagor",
+        contactLinkedIn: "LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410",
+        githubHeader: "=== GITHUB ===",
+        githubProfile: "GitHub: https://github.com/ZaGOR-1",
+        githubFocus: "Focus: learning projects, bots, scripts, server notes",
         unknown: "Команда не знайдена: {cmd}. Введіть 'help' для довідки."
       }
     },
@@ -153,7 +182,8 @@
         toContent: "Skip to content"
       },
       site: {
-        name: "Denys Zahorovskyi"
+        name: "Denys Zahorovskyi",
+        shortName: "Denys"
       },
       language: {
         ukLabel: "Switch language to Ukrainian",
@@ -174,11 +204,16 @@
         quickFacts: "Profile quick facts",
         primaryActions: "Primary actions",
         terminal: "Short profile in code format",
+        terminalTabs: "Terminal block switcher",
+        terminalInput: "Terminal command input",
         interests: "Areas of interest",
         quickProfile: "Quick profile",
+        learningNow: "What I am learning and practicing now",
         focusGrid: "Current growth directions",
         skills: "Skills by category",
         githubList: "What you can find on GitHub",
+        githubSnapshot: "GitHub technical snapshot",
+        availabilityStatus: "Availability and collaboration format",
         githubProfile: "Denys Zahorovskyi GitHub profile",
         telegramProfile: "Denys Zahorovskyi Telegram profile",
         linkedinProfile: "Denys Zahorovskyi LinkedIn profile",
@@ -223,6 +258,11 @@
         number: "02 / Focus",
         title: "Current focus",
         intro: "Most of my attention goes into practice: backend basics, server environments and small tools that can be brought to a working state.",
+        learningTitle: "Currently learning / practicing",
+        learningLaravel: "Laravel basics",
+        learningLinux: "Linux deploy",
+        learningBots: "Telegram bots",
+        learningSql: "SQL practice",
         backendLabel: "Backend basics",
         backendTitle: "PHP, Laravel, Symfony, APIs",
         backendText: "Learning application logic, routes, databases and simple APIs.",
@@ -257,6 +297,11 @@
         itemBots: "Telegram bots",
         itemAutomation: "automation scripts",
         itemNotes: "Linux/VPS notes",
+        snapshotProfileLabel: "profile",
+        snapshotContentLabel: "content",
+        snapshotContentValue: "learning projects · bots · scripts · server notes",
+        snapshotFocusLabel: "last focus",
+        snapshotFocusValue: "web/backend/linux",
         button: "Go to GitHub"
       },
       contact: {
@@ -264,13 +309,19 @@
         title: "Contact / Links",
         status: "status: learning / open to practice",
         text: "I am open to learning projects, practice, internships or small collaboration where I can work with real tasks and grow as a developer.",
+        openToLabel: "open to",
+        openToValue: "practice / internship / learning projects",
+        locationLabel: "location",
+        locationValue: "Ukraine",
+        formatLabel: "format",
+        formatValue: "remote / part-time learning collaboration",
         button: "Write to me"
       },
       footer: {
         note: "built with html/css/js · hosted on vps"
       },
       cli: {
-        help: "Available commands:\n  neofetch  - system information\n  skills    - list of my skills\n  about     - information about me\n  clear     - clear terminal\n  help      - show this help message",
+        help: "Available commands:\n  neofetch  - system information\n  skills    - list of my skills\n  about     - information about me\n  contact   - contact links\n  github    - GitHub and repository focus\n  clear     - clear terminal\n  help      - show this help message",
         welcome: "Type 'help' to see available commands.",
         skillsHeader: "=== MY SKILLS ===",
         skillsGroupFrontend: "Frontend: HTML, CSS, JavaScript",
@@ -279,6 +330,13 @@
         skillsGroupTools: "Tools: Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache",
         skillsGroupAuto: "Automation: Telegram bots, scripts",
         aboutText: "I am a 2nd year Software Engineering student at Zhytomyr Polytechnic.\nLearning backend, databases, Linux environments and automation.",
+        contactHeader: "=== CONTACT ===",
+        contactEmail: "Email: ran31276@gmail.com",
+        contactTelegram: "Telegram: https://t.me/Denis_Zagor",
+        contactLinkedIn: "LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410",
+        githubHeader: "=== GITHUB ===",
+        githubProfile: "GitHub: https://github.com/ZaGOR-1",
+        githubFocus: "Focus: learning projects, bots, scripts, server notes",
         unknown: "Command not found: {cmd}. Type 'help' for help."
       }
     }
@@ -594,7 +652,7 @@
     // Show welcome message
     setTimeout(() => {
       const welcome = getValue("cli.welcome", activeLanguage);
-      appendCliLine(`<span class="code-comment">${welcome}</span>`);
+      appendCliLine(`<span class="code-comment" data-i18n="cli.welcome">${escapeHtml(welcome)}</span>`);
     }, 100);
 
     cliInput.addEventListener("keydown", function (event) {
@@ -635,6 +693,26 @@
                   `  * ${escapeHtml(tools)}<br>` +
                   `  * ${escapeHtml(auto)}`;
         appendCliLine(out);
+      } else if (cmd === "contact") {
+        const header = getValue("cli.contactHeader", activeLanguage);
+        const email = getValue("cli.contactEmail", activeLanguage);
+        const telegram = getValue("cli.contactTelegram", activeLanguage);
+        const linkedIn = getValue("cli.contactLinkedIn", activeLanguage);
+
+        const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                    `  * ${formatCliLink(email, "mailto:ran31276@gmail.com")}<br>` +
+                    `  * ${formatCliLink(telegram, "https://t.me/Denis_Zagor")}<br>` +
+                    `  * ${formatCliLink(linkedIn, "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410")}`;
+        appendCliLine(out);
+      } else if (cmd === "github") {
+        const header = getValue("cli.githubHeader", activeLanguage);
+        const profile = getValue("cli.githubProfile", activeLanguage);
+        const focus = getValue("cli.githubFocus", activeLanguage);
+
+        const out = `<span class="code-keyword">${escapeHtml(header)}</span><br>` +
+                    `  * ${formatCliLink(profile, "https://github.com/ZaGOR-1")}<br>` +
+                    `  * ${escapeHtml(focus)}`;
+        appendCliLine(out);
       } else if (cmd === "neofetch") {
         const uptime = getUptimeString();
         const status = getValue("hero.status", activeLanguage);
@@ -667,6 +745,10 @@
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 
+  function formatCliLink(label, href) {
+    return `<a class="cli-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+  }
+
   // Tab switching
   const tabs = document.querySelectorAll(".terminal-tab");
   const panelJson = document.getElementById("terminal-json");
@@ -679,15 +761,19 @@
 
       const target = tab.dataset.tab;
       if (target === "json") {
-        if (panelJson) panelJson.style.display = "";
-        if (panelSh) panelSh.style.display = "none";
+        if (panelJson) panelJson.hidden = false;
+        if (panelSh) panelSh.hidden = true;
         if (statusCenter) statusCenter.textContent = "profile.json [UTF-8]";
       } else {
-        if (panelJson) panelJson.style.display = "none";
-        if (panelSh) panelSh.style.display = "flex";
+        if (panelJson) panelJson.hidden = true;
+        if (panelSh) panelSh.hidden = false;
         if (statusCenter) statusCenter.textContent = "terminal.sh [BASH]";
         if (cliInput) setTimeout(() => cliInput.focus(), 50);
       }
+
+      tabs.forEach(function (button) {
+        button.setAttribute("aria-selected", String(button === tab));
+      });
     });
   });
 
@@ -695,36 +781,5 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // GitHub Commits Graph Calendar Generator
-  function initGithubGraph() {
-    const graphContainer = document.querySelector(".github-contrib-grid");
-    if (!graphContainer) return;
-
-    const totalSquares = 53 * 7;
-    let html = "";
-    const rand = Math.random;
-
-    for (let i = 0; i < totalSquares; i++) {
-      const dayOfWeek = i % 7;
-      let level = 0;
-      const roll = rand();
-
-      if (roll > 0.82) {
-        level = Math.floor(rand() * 4); // 0 to 3
-      } else if (roll > 0.55) {
-        level = Math.floor(rand() * 2); // 0 to 1
-      }
-
-      if ((dayOfWeek === 0 || dayOfWeek === 6) && rand() > 0.3) {
-        level = 0;
-      }
-
-      html += `<span class="contrib-square level-${level}"></span>`;
-    }
-
-    graphContainer.innerHTML = html;
-  }
-
-  initGithubGraph();
   revealSections();
 })();

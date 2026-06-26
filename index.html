@@ -32,7 +32,10 @@
 
     <header class="site-header">
       <div class="container header-layout">
-        <a class="brand" href="#home" aria-label="На початок сторінки" data-i18n-aria-label="aria.home" data-i18n="site.name">Денис Загоровський</a>
+        <a class="brand" href="#home" aria-label="На початок сторінки" data-i18n-aria-label="aria.home">
+          <span class="brand-name-full" data-i18n="site.name">Денис Загоровський</span>
+          <span class="brand-name-short" data-i18n="site.shortName" aria-hidden="true">Денис</span>
+        </a>
 
         <nav class="site-nav" id="site-nav" aria-label="Основна навігація" data-i18n-aria-label="aria.mainNav">
           <a href="#about" data-i18n="nav.about">Про мене</a>
@@ -85,30 +88,30 @@
           </div>
 
           <aside class="terminal-card reveal" aria-label="Короткий профіль у форматі коду" data-i18n-aria-label="aria.terminal">
-            <div class="terminal-header" aria-hidden="true">
-              <div class="terminal-dots">
+            <div class="terminal-header">
+              <div class="terminal-dots" aria-hidden="true">
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
-              <div class="terminal-tabs">
-                <button class="terminal-tab is-active" type="button" data-tab="json">profile.json</button>
-                <button class="terminal-tab" type="button" data-tab="sh">terminal.sh</button>
+              <div class="terminal-tabs" role="tablist" aria-label="Перемикач термінального блоку" data-i18n-aria-label="aria.terminalTabs">
+                <button class="terminal-tab is-active" type="button" id="terminal-tab-json" role="tab" aria-selected="true" aria-controls="terminal-json" data-tab="json">profile.json</button>
+                <button class="terminal-tab" type="button" id="terminal-tab-sh" role="tab" aria-selected="false" aria-controls="terminal-sh" data-tab="sh">terminal.sh</button>
               </div>
             </div>
             
-            <pre class="terminal-code" id="terminal-json"><code data-i18n="hero.code">const developer = {
+            <pre class="terminal-code" id="terminal-json" role="tabpanel" aria-labelledby="terminal-tab-json"><code data-i18n="hero.code">const developer = {
   name: "Денис Загоровський",
   role: "Software Engineering Student",
   focus: ["Backend", "Web", "Linux", "Automation"],
   learning: ["Laravel", "Symfony", "VPS Deploy"]
 };</code></pre>
 
-            <div class="terminal-cli" id="terminal-sh" style="display: none;">
+            <div class="terminal-cli" id="terminal-sh" role="tabpanel" aria-labelledby="terminal-tab-sh" hidden>
               <div class="cli-output"></div>
               <div class="cli-input-line">
                 <span class="cli-prompt">visitor@zagor-vps:~$</span>
-                <input class="cli-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input">
+                <input class="cli-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Ввід команди в терміналі" data-i18n-aria-label="aria.terminalInput">
               </div>
             </div>
 
@@ -142,7 +145,7 @@
               <li class="tag">vps</li>
               <li class="tag">telegram bots</li>
             </ul>
-            <dl class="profile-panel" aria-label="Quick profile" data-i18n-aria-label="aria.quickProfile">
+            <dl class="profile-panel" aria-label="Короткий профіль" data-i18n-aria-label="aria.quickProfile">
               <div>
                 <dt data-i18n="about.profileEducationLabel">Освіта</dt>
                 <dd data-i18n="about.profileEducationValue">Software Engineering, 2 курс</dd>
@@ -174,6 +177,23 @@
             <p data-i18n="focus.intro">
               Найбільше уваги зараз йде в практику: backend-основи, серверне середовище й маленькі інструменти, які можна довести до робочого стану.
             </p>
+            <div class="learning-now" aria-label="Що зараз вчу та практикую" data-i18n-aria-label="aria.learningNow">
+              <p class="item-label" data-i18n="focus.learningTitle">Зараз вчу / практикую</p>
+              <ul>
+                <li>
+                  <span data-i18n="focus.learningLaravel">Laravel basics</span>
+                </li>
+                <li>
+                  <span data-i18n="focus.learningLinux">Linux deploy</span>
+                </li>
+                <li>
+                  <span data-i18n="focus.learningBots">Telegram bots</span>
+                </li>
+                <li>
+                  <span data-i18n="focus.learningSql">SQL practice</span>
+                </li>
+              </ul>
+            </div>
             <div class="focus-grid" aria-label="Поточні напрями розвитку" data-i18n-aria-label="aria.focusGrid">
               <article class="focus-item">
                 <p class="item-label" data-i18n="focus.backendLabel">Backend-основи</p>
@@ -240,31 +260,28 @@
                 Навчальні, особисті та експериментальні проєкти я збираю на GitHub. Там можна знайти вебзастосунки, невеликі backend-експерименти, Telegram-боти, автоматизацію та інші речі, які я поступово доробляю й покращую.
               </p>
               <ul class="github-list" aria-label="Що можна знайти на GitHub" data-i18n-aria-label="aria.githubList">
-                <li data-i18n="github.itemStudent">student projects</li>
-                <li data-i18n="github.itemWeb">web applications</li>
-                <li data-i18n="github.itemBackend">backend experiments</li>
+                <li data-i18n="github.itemStudent">навчальні проєкти</li>
+                <li data-i18n="github.itemWeb">вебзастосунки</li>
+                <li data-i18n="github.itemBackend">backend-експерименти</li>
                 <li data-i18n="github.itemBots">Telegram bots</li>
-                <li data-i18n="github.itemAutomation">automation scripts</li>
-                <li data-i18n="github.itemNotes">Linux/VPS notes</li>
+                <li data-i18n="github.itemAutomation">скрипти автоматизації</li>
+                <li data-i18n="github.itemNotes">Linux/VPS нотатки</li>
               </ul>
-              
-              <div class="github-contrib-card" aria-hidden="true">
-                <div class="contrib-header">
-                  <span class="contrib-title">Contributions Calendar</span>
-                  <span class="contrib-count">421 commits in the last year</span>
+              <dl class="github-snapshot" aria-label="GitHub technical snapshot" data-i18n-aria-label="aria.githubSnapshot">
+                <div>
+                  <dt data-i18n="github.snapshotProfileLabel">profile</dt>
+                  <dd>github.com/ZaGOR-1</dd>
                 </div>
-                <div class="github-contrib-grid"></div>
-                <div class="contrib-legend">
-                  <span>Less</span>
-                  <span class="legend-square level-0"></span>
-                  <span class="legend-square level-1"></span>
-                  <span class="legend-square level-2"></span>
-                  <span class="legend-square level-3"></span>
-                  <span>More</span>
+                <div>
+                  <dt data-i18n="github.snapshotContentLabel">content</dt>
+                  <dd data-i18n="github.snapshotContentValue">навчальні проєкти · bots · scripts · server notes</dd>
                 </div>
-              </div>
+                <div>
+                  <dt data-i18n="github.snapshotFocusLabel">останній фокус</dt>
+                  <dd data-i18n="github.snapshotFocusValue">web/backend/linux</dd>
+                </div>
+              </dl>
 
-              <p class="github-url">github.com/ZaGOR-1</p>
               <a class="button button-primary" href="https://github.com/ZaGOR-1" target="_blank" rel="noopener noreferrer" aria-label="Перейти на GitHub профіль Дениса Загоровського" data-i18n-aria-label="aria.githubProfile" data-i18n="github.button">
                 Перейти на GitHub
               </a>
@@ -286,6 +303,20 @@
                 <p data-i18n="contact.text">
                   Відкритий до навчальних проєктів, практики, стажування або невеликої співпраці, де можна попрацювати з реальними задачами й вирости як розробник.
                 </p>
+                <dl class="availability-list" aria-label="Доступність і формат співпраці" data-i18n-aria-label="aria.availabilityStatus">
+                  <div>
+                    <dt data-i18n="contact.openToLabel">відкритий до</dt>
+                    <dd data-i18n="contact.openToValue">практики / стажування / навчальних проєктів</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="contact.locationLabel">локація</dt>
+                    <dd data-i18n="contact.locationValue">Україна</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="contact.formatLabel">формат</dt>
+                    <dd data-i18n="contact.formatValue">remote / part-time learning collaboration</dd>
+                  </div>
+                </dl>
                 <p>
                   <a class="contact-email" href="mailto:ran31276@gmail.com">ran31276@gmail.com</a>
                 </p>
