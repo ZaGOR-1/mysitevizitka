@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v6-2026-06-27";
+const CACHE_VERSION = "v8-2026-06-28";
 const CACHE_NAME = "portfolio-cache-" + CACHE_VERSION;
 
 const CORE_ASSETS = [

@@ -85,11 +85,24 @@
     // ---- command registry --------------------------------------------------
     const commands = {
       help: function () {
-        appendCliLine(escapeHtml(t("cli.help")).replace(/\n/g, "<br>"));
+        let text = t("cli.help");
+        let lines = text.split("\n").map(function (line) {
+          let match = line.match(/^(\s{2})([a-z]+)(\s+-\s+.*)$/);
+          if (match) {
+            return match[1] + '<span class="code-keyword">' + escapeHtml(match[2]) + '</span>' + escapeHtml(match[3]);
+          }
+          return escapeHtml(line);
+        });
+        appendCliLine(lines.join("<br>"));
       },
       neofetch: function () {
         const uptime = getUptimeString();
         const status = t("hero.status");
+        const palette = '<span style="color:#f472b6">██</span> ' +
+                        '<span style="color:#60a5fa">██</span> ' +
+                        '<span style="color:#34d399">██</span> ' +
+                        '<span style="color:#7dd3c7">██</span> ' +
+                        '<span style="color:#98a4b3">██</span>';
         const ascii =
           '   <span class="code-keyword">_____</span> <span class="code-def">_____</span>  <span class="code-string">_   _</span>    visitor@zagor-vps<br>' +
           '  <span class="code-keyword">|__  /</span><span class="code-def">|  __ \\</span><span class="code-string">| | | |</span>   -----------------<br>' +
@@ -98,7 +111,8 @@
           '  <span class="code-keyword">/____|</span><span class="code-def">|_|</span>     <span class="code-string">\\___/</span>    Kernel: Linux 6.8.0-generic<br>' +
           "                         Uptime: " + uptime + "<br>" +
           "                         Shell: bash (custom js-sandbox)<br>" +
-          "                         Status: " + escapeHtml(status);
+          "                         Status: " + escapeHtml(status) + "<br>" +
+          "                         Palette: " + palette;
         appendCliLine(ascii);
       },
       skills: function () {

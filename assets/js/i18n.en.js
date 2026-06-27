@@ -79,7 +79,7 @@
       factOpen: "Open to learning projects",
       githubButton: "GitHub",
       contactButton: "Contact me",
-      code: '<span class="code-keyword">const</span> <span class="code-def">developer</span> = {\n  name: <span class="code-string">"Denys Zahorovskyi"</span>,\n  role: <span class="code-string">"Software Engineering Student"</span>,\n  focus: [<span class="code-string">"Backend"</span>, <span class="code-string">"Web"</span>, <span class="code-string">"Linux"</span>, <span class="code-string">"Automation"</span>],\n  learning: [<span class="code-string">"Laravel"</span>, <span class="code-string">"Symfony"</span>, <span class="code-string">"VPS Deploy"</span>]\n};'
+      code: '<span class="code-keyword">const</span> <span class="code-def">developer</span> = {\n  <span class="code-key">name</span>: <span class="code-string">"Denys Zahorovskyi"</span>,\n  <span class="code-key">role</span>: <span class="code-string">"Software Engineering Student"</span>,\n  <span class="code-key">focus</span>: [<span class="code-string">"Backend"</span>, <span class="code-string">"Web"</span>, <span class="code-string">"Linux"</span>, <span class="code-string">"Automation"</span>],\n  <span class="code-key">learning</span>: [<span class="code-string">"Laravel"</span>, <span class="code-string">"Symfony"</span>, <span class="code-string">"VPS Deploy"</span>]\n};'
     },
     about: {
       number: "01 / About",

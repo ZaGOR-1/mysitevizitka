@@ -32,7 +32,7 @@
   --line-height-tight: 1.08;
   --line-height-base: 1.65;
   --line-height-loose: 1.8;
-  --letter-spacing-label: 0;
+  --letter-spacing-label: 0.06em;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -274,6 +274,7 @@ pre {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
 }
 
 .section-number {
@@ -623,8 +624,8 @@ html[data-theme="light"] .theme-toggle::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 74% 18%, var(--color-accent-soft), transparent 34rem),
-    radial-gradient(ellipse at 10% 80%, rgba(125, 211, 199, 0.05), transparent 28rem);
+    radial-gradient(circle at 80% 20%, var(--color-accent-soft), transparent 45rem),
+    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.05), transparent 35rem);
   opacity: 0.85;
 }
 
@@ -772,10 +773,23 @@ html[data-theme="light"] .theme-toggle::before {
   overflow: hidden;
 }
 
+.terminal-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 52px var(--color-shadow),
+    0 0 50px -15px rgba(125, 211, 199, 0.14);
+}
+
 html[data-theme="light"] .terminal-card {
   box-shadow:
     0 16px 42px var(--color-shadow),
     0 0 34px -18px rgba(13, 148, 136, 0.05);
+}
+
+html[data-theme="light"] .terminal-card:hover {
+  box-shadow:
+    0 20px 48px var(--color-shadow),
+    0 0 40px -15px rgba(13, 148, 136, 0.1);
 }
 
 .terminal-header {
@@ -941,6 +955,8 @@ html[data-theme="light"] .code-error {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   color: var(--color-muted);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
 }
 .terminal-status .status-left {
   color: var(--color-accent);
@@ -992,6 +1008,9 @@ html[data-theme="light"] .terminal-status .status-right {
 .code-def {
   color: #60a5fa; /* blue */
 }
+.code-key {
+  color: var(--color-accent-strong); /* sky blue */
+}
 .code-string {
   color: #34d399; /* emerald */
 }
@@ -1004,6 +1023,9 @@ html[data-theme="light"] .code-def {
 }
 html[data-theme="light"] .code-string {
   color: #032f62; /* navy string blue */
+}
+html[data-theme="light"] .code-key {
+  color: #0d6f68; /* deep teal */
 }
 
 .section-heading {
@@ -1098,6 +1120,8 @@ html[data-theme="light"] .code-string {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
 }
 
 .profile-panel dd {
@@ -1154,6 +1178,7 @@ html[data-theme="light"] .code-string {
   border-radius: 0;
   transition:
     border-color var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
@@ -1170,6 +1195,7 @@ html[data-theme="light"] .code-string {
 
 .focus-item:hover {
   border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
 }
 
 .focus-item:hover::before {
@@ -1392,7 +1418,7 @@ html[data-theme="light"] .code-string {
 }
 
 .social-links a::after {
-  content: "->";
+  content: "\2192";
   color: var(--color-accent);
   opacity: 0.76;
   transition:
@@ -1894,7 +1920,7 @@ html[data-theme="light"] .code-string {
   .language-switch,
   .scroll-progress,
   .skip-link,
-  .terminal-card,
+  /* .terminal-card is customized for print */
   .button,
   .copy-email-button,
   .copy-email-status,
@@ -2103,5 +2129,46 @@ html[data-theme="light"] .code-string {
   .social-links a::before,
   .social-links a::after {
     display: none !important;
+  }
+
+  /* Custom terminal print rules */
+  .terminal-header,
+  .terminal-status,
+  .terminal-cli {
+    display: none !important;
+  }
+
+  .terminal-card {
+    display: block !important;
+    background: transparent !important;
+    border: 1px solid #dddddd !important;
+    box-shadow: none !important;
+    margin-block-start: 1rem !important;
+    page-break-inside: avoid !important;
+  }
+
+  .terminal-code {
+    display: block !important;
+    color: #000000 !important;
+    background: transparent !important;
+    padding: 0.5rem !important;
+  }
+
+  .code-keyword {
+    color: #000000 !important;
+    font-weight: bold !important;
+  }
+
+  .code-def {
+    color: #000000 !important;
+    font-weight: bold !important;
+  }
+
+  .code-key {
+    color: #555555 !important;
+  }
+
+  .code-string {
+    color: #333333 !important;
   }
 }
