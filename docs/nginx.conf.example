@@ -55,7 +55,7 @@ server {
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     # script-src містить sha256-хеш інлайн-скрипта в <head> (тема/мова без FOUC).
     # Хеш має збігатися з CSP у index.html; онови його, якщо змінюєш інлайн-скрипт.
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-NmXIZC65V5kN2b1KHENKpiAIfXsDG9tTCgf2BJKK4v0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';" always;
 
     # Увімкни після переходу на HTTPS (Certbot):
     # add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;

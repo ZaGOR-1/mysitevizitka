@@ -4,12 +4,19 @@
 
 This repository is a lightweight, fully static one-page developer portfolio / personal site.
 
-Primary source documents:
+Current source documents:
 
-- `docs/promt.md` — main product/design prompt and final requirements.
-- `docs/plan.md` — implementation plan and checklist.
+- `README.md` — current project structure, editing guide, deployment notes, and customization points.
+- `docs/checklist.md` — current local/deployment audit checklist.
+- `docs/improvement-roadmap.md` — current roadmap for future improvements.
 
-Before making changes, read both files and follow them unless the user explicitly gives newer instructions.
+Historical documents:
+
+- `docs/promt.md` — original product/design prompt, kept for context.
+- `docs/plan.md` — original phased implementation log, kept for context.
+- `docs/PROMPT_PLAN_REVIEW.md` — original prompt/plan review, kept for context.
+
+Before making changes, prefer the current source documents above. Use historical documents only for background unless the user explicitly asks to follow them.
 
 ## Non-negotiable requirements
 
@@ -62,6 +69,9 @@ Expected final structure:
 index.html
 styles.css
 sw.js
+robots.txt
+sitemap.xml
+site.webmanifest
 assets/
   js/
     i18n.en.js
@@ -71,7 +81,17 @@ assets/
     cli.js
     nav.js
     main.js
+  fonts/
+    fonts.css
+    *.woff2
+  favicon.svg
+  og-image.svg
+  og-image.png
   README.md
+docs/
+  checklist.md
+  improvement-roadmap.md
+  nginx.conf.example
 README.md
 ```
 
@@ -80,6 +100,7 @@ Optional lightweight assets are allowed only when useful:
 ```text
 assets/favicon.svg
 assets/og-image.svg
+assets/og-image.png
 ```
 
 Do not introduce extra folders or tooling unless the user asks.
@@ -178,4 +199,4 @@ README should explain:
 - Keep the code easy for a beginner to edit manually.
 - Do not over-engineer.
 - Do not add dependencies to solve problems that plain HTML/CSS/JS can solve.
-- When uncertain, preserve the requirements from `docs/promt.md` and `docs/plan.md`.
+- When uncertain, preserve the current requirements from `README.md`, `docs/checklist.md`, and `docs/improvement-roadmap.md`; use `docs/promt.md` and `docs/plan.md` only as historical context.

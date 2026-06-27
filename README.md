@@ -8,6 +8,8 @@
 
 ```text
 .
+├── .gitignore
+├── AGENTS.md
 ├── index.html
 ├── styles.css
 ├── sw.js
@@ -34,10 +36,13 @@
 │   ├── improvement-roadmap.md
 │   ├── checklist.md
 │   ├── nginx.conf.example
+│   ├── PROMPT_PLAN_REVIEW.md
 │   ├── plan.md
 │   └── promt.md
 └── README.md
 ```
+
+Актуальні робочі документи: цей `README.md`, `AGENTS.md`, `docs/checklist.md`, `docs/improvement-roadmap.md` і `assets/README.md`. Файли `docs/promt.md`, `docs/plan.md` і `docs/PROMPT_PLAN_REVIEW.md` залишені як архів початкового задуму та етапів реалізації.
 
 ## Як відкрити локально
 
@@ -245,10 +250,11 @@ html[data-theme="light"] {
 - `JetBrains Mono` з вагами `400`, `500`, `600`;
 - `font-display: swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження.
 
-У `styles.css` на початку підключено локальний файл:
+Локальний файл шрифтів підключено в `<head>` файлу `index.html` перед основними стилями:
 
-```css
-@import url("assets/fonts/fonts.css");
+```html
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
 ```
 
 Далі шрифти задані через CSS-змінні:
@@ -283,7 +289,7 @@ JS розбитий на класичні скрипти у `assets/js/`, які
 - `i18n.en.js` / `i18n.uk.js` — словники (EN повний; UA лише те, чого немає в DOM);
 - `i18n.js` — двигун мов: зчитує UA з DOM, перемикає мову, шле подію `app:languagechange`;
 - `theme.js` — dark/light theme + збереження в `localStorage` + `prefers-color-scheme`;
-- `cli.js` — termarinal: вкладки, годинник, CLI з реєстром команд;
+- `cli.js` — terminal: вкладки, годинник, CLI з реєстром команд;
 - `nav.js` — mobile menu, smooth scroll, active nav link, scroll progress, reveal animation;
 - `main.js` — bootstrap: порядок ініціалізації, рік у footer, реєстрація service worker.
 

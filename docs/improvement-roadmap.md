@@ -17,6 +17,7 @@
 - active nav link при скролі;
 - scroll progress indicator;
 - compact Skills layout;
+- модульний Vanilla JS у `assets/js/`;
 - GitHub technical snapshot без фейкової статистики;
 - `robots.txt`;
 - `sitemap.xml`;
@@ -54,7 +55,7 @@
 - додано локальні `.woff2` для `Manrope` і `JetBrains Mono`;
 - прибрано `fonts.googleapis.com` і `fonts.gstatic.com` з `index.html`;
 - CSP оновлено до `font-src 'self'`;
-- `styles.css` підключає локальні шрифти через `@import`.
+- `assets/fonts/fonts.css` підключено напряму в `index.html` перед `styles.css`.
 
 ### JSON-LD identity
 
@@ -77,7 +78,7 @@
 - оновлено секцію шрифтів;
 - оновлено Nginx cache/CSP рекомендації.
 
-## 3. Наступні фази
+## 3. Виконані фази з roadmap
 
 ### Фаза 1: Local audit checklist
 
@@ -136,6 +137,8 @@
 - кілька збігів виводять підказку;
 - input не змінюється при неоднозначному збігу.
 
+## 4. Наступні фази
+
 ### Фаза 3: Terminal email command
 
 Пріоритет: P3
@@ -177,7 +180,7 @@
 - не ламати стандартну навігацію браузера;
 - можна відкласти, бо це не must-have.
 
-## 4. Дизайн-напрям
+## 5. Дизайн-напрям
 
 Поточний дизайн уже відповідає концепції **Editorial Tech Portfolio + Terminal accents**.
 
@@ -195,7 +198,7 @@
 - додати дуже легкий scrollbar polish;
 - перевірити light theme після кожних великих CSS змін.
 
-## 5. Definition of Done для наступних змін
+## 6. Definition of Done для наступних змін
 
 Перед завершенням кожної фази перевірити:
 

@@ -1,3 +1,7 @@
+> Archived review.
+>
+> This file records the initial review of the original prompt and implementation plan. Some observations below were true at the beginning of the project but are no longer current. For the current project state, use `README.md`, `AGENTS.md`, `docs/checklist.md`, and `docs/improvement-roadmap.md`.
+
 # Review: prompt and implementation plan
 
 ## Verdict
@@ -32,25 +36,33 @@ The prompt and plan are generally well structured and suitable for generating a 
    For Codex, the useful default is `AGENTS.md`, not `Codex.md`. Use `Codex.md` only if you configure Codex fallback filenames manually.
 
 5. Fill `.gitignore`.
+   Status now: done. The repository has a practical `.gitignore`, including local editor/tooling folders.
 
-   The current `.gitignore` is empty. Add OS/editor/temp files and accidental build artifacts.
+   Original note: the initial `.gitignore` needed OS/editor/temp files and accidental build artifacts.
 
 6. Avoid shipping `.git` in archives.
 
-   Your uploaded ZIP contains a `.git` directory. For sharing with AI or another person, it is usually cleaner to export only the working files unless Git history is needed.
+   Original note: the uploaded ZIP contained a `.git` directory. For sharing with AI or another person, it is usually cleaner to export only the working files unless Git history is needed.
 
-## Recommended repository files
+## Current repository files
 
 ```text
-promt.md
-plan.md
 AGENTS.md
 .gitignore
 index.html
 styles.css
+sw.js
+robots.txt
+sitemap.xml
+site.webmanifest
 assets/js/
+assets/fonts/
 assets/
   README.md
+docs/
+  checklist.md
+  improvement-roadmap.md
+  nginx.conf.example
 README.md
 ```
 

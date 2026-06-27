@@ -8,6 +8,8 @@
 favicon.svg
 og-image.svg
 og-image.png
+js/
+  *.js
 fonts/
   fonts.css
   *.woff2
@@ -17,6 +19,7 @@ fonts/
 
 - `favicon.svg` або інші favicon-файли;
 - Open Graph image, наприклад `og-image.png` або `og-image.svg`;
+- модулі Vanilla JavaScript у `assets/js/`;
 - локальні шрифти у форматі `.woff2`;
 - невеликі іконки або зображення, якщо вони реально потрібні дизайну.
 
@@ -37,7 +40,7 @@ assets/fonts/fonts.css
 assets/fonts/*.woff2
 ```
 
-Файл `fonts.css` містить `@font-face` для `Manrope` і `JetBrains Mono`, а `styles.css` підключає його локальним `@import`.
+Файл `fonts.css` містить `@font-face` для `Manrope` і `JetBrains Mono`. Він підключений у `<head>` файлу `index.html` перед `styles.css`, щоб шрифти були доступні без зовнішніх CDN.
 
 Приклад:
 
@@ -51,4 +54,4 @@ assets/fonts/*.woff2
 }
 ```
 
-Не підключай багато нових ваг і стилів без потреби. Якщо змінюєш файли шрифтів, онови список assets у `sw.js`.
+Не підключай багато нових ваг і стилів без потреби. Якщо змінюєш файли шрифтів або JS-модулі, перевір `CORE_ASSETS` у `sw.js` і кеш-поведінку service worker.
