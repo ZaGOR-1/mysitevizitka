@@ -1,11 +1,17 @@
-const CACHE_VERSION = "v4-2026-06-26";
+const CACHE_VERSION = "v6-2026-06-27";
 const CACHE_NAME = "portfolio-cache-" + CACHE_VERSION;
 
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./script.js",
+  "./assets/js/i18n.en.js",
+  "./assets/js/i18n.uk.js",
+  "./assets/js/i18n.js",
+  "./assets/js/theme.js",
+  "./assets/js/cli.js",
+  "./assets/js/nav.js",
+  "./assets/js/main.js",
   "./site.webmanifest",
   "./assets/favicon.svg",
   "./assets/og-image.png",

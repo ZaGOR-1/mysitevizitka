@@ -61,8 +61,16 @@ Expected final structure:
 ```text
 index.html
 styles.css
-script.js
+sw.js
 assets/
+  js/
+    i18n.en.js
+    i18n.uk.js
+    i18n.js
+    theme.js
+    cli.js
+    nav.js
+    main.js
   README.md
 README.md
 ```

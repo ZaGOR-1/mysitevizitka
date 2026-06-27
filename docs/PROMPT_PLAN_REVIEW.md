@@ -48,7 +48,7 @@ AGENTS.md
 .gitignore
 index.html
 styles.css
-script.js
+assets/js/
 assets/
   README.md
 README.md

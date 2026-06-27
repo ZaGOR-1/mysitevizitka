@@ -300,8 +300,9 @@ const developer = {
 portfolio/
 ├── index.html
 ├── styles.css
-├── script.js
 ├── assets/
+│   ├── js/
+│   │   └── *.js
 │   └── README.md
 └── README.md
 ```
@@ -406,7 +407,7 @@ sudo certbot --nginx -d about.me.hotzagor.tech
 
 * `index.html`
 * `styles.css`
-* `script.js`
+* `assets/js/`
 * `README.md`
 * `assets/README.md`
 

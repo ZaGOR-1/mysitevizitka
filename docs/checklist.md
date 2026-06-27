@@ -5,7 +5,7 @@
 ## 1. Статичні перевірки
 
 ```powershell
-node --check .\script.js
+Get-ChildItem .\assets\js\*.js | ForEach-Object { node --check $_.FullName }
 node --check .\sw.js
 ```
 
@@ -32,7 +32,7 @@ http://localhost:8000
 
 - немає console errors;
 - сайт відкривається без npm install;
-- `index.html`, `styles.css`, `script.js`, `sw.js`, `robots.txt`, `sitemap.xml`, `site.webmanifest` доступні.
+- `index.html`, `styles.css`, `assets/js/*.js`, `sw.js`, `robots.txt`, `sitemap.xml`, `site.webmanifest` доступні.
 
 ## 3. Основні сценарії
 

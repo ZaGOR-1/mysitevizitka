@@ -6,6 +6,7 @@ Desktop.ini
 # Editor folders
 .vscode/
 .idea/
+.claude/
 
 # Logs and temporary files
 *.log

@@ -1,5 +1,5 @@
-@import url("assets/fonts/fonts.css");
-
+/* Fonts are linked directly in index.html (<link> + preload) so the browser
+   can start fetching them in parallel instead of after this file is parsed. */
 :root {
   color-scheme: dark;
 

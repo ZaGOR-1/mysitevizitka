@@ -91,7 +91,7 @@
 
 1. Створено `docs/checklist.md`.
 2. Додати перевірки:
-   - `node --check .\script.js`;
+   - `node --check` для кожного файлу в `assets/js/`;
    - `node --check .\sw.js`;
    - 360px, 414px, 768px, 1366px, 1440px;
    - mobile menu;
@@ -199,7 +199,7 @@
 
 Перед завершенням кожної фази перевірити:
 
-- `node --check .\script.js`;
+- `node --check` для кожного файлу в `assets/js/`;
 - `node --check .\sw.js`;
 - відсутність console errors у браузері;
 - відсутність horizontal scroll на 360px;
