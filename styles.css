@@ -1202,6 +1202,7 @@ html[data-theme="light"] .code-string {
   align-items: baseline;
   min-height: 3rem;
   padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
   border-top: var(--border-thin);
   transition:
     color var(--transition-fast),
@@ -1769,6 +1770,7 @@ html[data-theme="light"] .code-string {
     grid-template-columns: 1fr;
     gap: var(--space-2xs);
     align-items: start;
+    padding-inline: var(--space-sm);
   }
 
   .contact-panel {
