@@ -17,8 +17,10 @@
 - active nav link при скролі;
 - scroll progress indicator;
 - compact Skills layout з рівнями `Практикую` / `Вчу` / `Знайомий з`;
+- легкий scrollbar polish для сторінки й terminal;
+- mobile hero/header polish;
 - модульний Vanilla JS у `assets/js/`;
-- GitHub technical snapshot без фейкової статистики;
+- GitHub technical snapshot без фейкової статистики, з клікабельним профілем;
 - `robots.txt`;
 - `sitemap.xml`;
 - `site.webmanifest`;
@@ -149,19 +151,7 @@
 
 Це приємна фіча, але не критична. Її варто робити тільки якщо terminal CLI хочеться розвивати далі.
 
-### Фаза 4: Custom scrollbar
-
-Пріоритет: P3
-
-Ціль: легкий scrollbar polish для сторінки й `.terminal-cli`.
-
-Важливо:
-
-- не робити scrollbar надто декоративним;
-- поважати системну поведінку;
-- не погіршити доступність.
-
-### Фаза 5: Developer keyboard shortcuts
+### Фаза 4: Developer keyboard shortcuts
 
 Пріоритет: P3
 
@@ -193,9 +183,7 @@
 
 Що можна обережно покращити:
 
-- зробити `github.com/ZaGOR-1` у technical snapshot клікабельним;
 - підтримувати Skills чесними за рівнями, якщо змінюється стек;
-- додати дуже легкий scrollbar polish;
 - перевірити light theme після кожних великих CSS змін.
 
 ## 6. Definition of Done для наступних змін
