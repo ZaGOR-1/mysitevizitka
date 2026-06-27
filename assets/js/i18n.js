@@ -8,6 +8,7 @@
  *   App.i18n.setLanguage(lang, save)
  *   App.i18n.getActiveLanguage()
  *   App.i18n.getSavedLanguage()
+ *   App.i18n.init()
  *
  * On every setLanguage() the engine dispatches an "app:languagechange" event on
  * document so other modules (theme, cli, nav) can refresh their own labels
@@ -20,6 +21,7 @@
   const root = document.documentElement;
   const languageStorageKey = "site-language";
   let activeLanguage = "uk";
+  let controlsInitialized = false;
 
   // ---- safe storage (shared with theme.js) --------------------------------
   const storage = {
@@ -151,6 +153,17 @@
     });
   }
 
+  function initLanguageControls() {
+    if (controlsInitialized) return;
+    controlsInitialized = true;
+
+    document.querySelectorAll("[data-language]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        setLanguage(button.dataset.language, true);
+      });
+    });
+  }
+
   function setLanguage(lang, shouldSave) {
     activeLanguage = lang === "en" ? "en" : "uk";
     root.setAttribute("lang", activeLanguage);
@@ -177,6 +190,7 @@
   }
 
   App.i18n = {
+    init: initLanguageControls,
     captureUkFromDom: captureUkFromDom,
     getValue: getValue,
     setLanguage: setLanguage,

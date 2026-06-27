@@ -117,16 +117,12 @@
     skills: {
       number: "03 / Skills",
       title: "Skills",
-      frontendTitle: "Frontend",
-      frontendText: "HTML, CSS, JavaScript",
-      backendTitle: "Backend",
-      backendText: "PHP, Laravel, Symfony, Python, C, C#",
-      databasesTitle: "Databases",
-      databasesText: "MySQL, SQLite",
-      toolsTitle: "Tools & Server",
-      toolsText: "Git, GitHub, Linux, Ubuntu, VPS, Nginx, Apache",
-      automationTitle: "Automation",
-      automationText: "Telegram bots, scripts, small tools"
+      practicingTitle: "Practicing",
+      practicingText: "HTML, CSS, JavaScript, PHP, Linux",
+      learningTitle: "Learning",
+      learningText: "Laravel, Symfony, VPS deploy, SQL",
+      familiarTitle: "Familiar with",
+      familiarText: "Python, C, C#, Apache, MySQL, SQLite"
     },
     github: {
       number: "04 / GitHub",
@@ -141,8 +137,8 @@
       snapshotProfileLabel: "profile",
       snapshotContentLabel: "content",
       snapshotContentValue: "learning projects · bots · scripts · server notes",
-      snapshotFocusLabel: "last focus",
-      snapshotFocusValue: "web/backend/linux",
+      snapshotFocusLabel: "latest focus",
+      snapshotFocusValue: "backend / linux / automation",
       button: "Go to GitHub"
     },
     contact: {

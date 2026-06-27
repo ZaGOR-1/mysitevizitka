@@ -16,7 +16,7 @@
 - copy email button;
 - active nav link при скролі;
 - scroll progress indicator;
-- compact Skills layout;
+- compact Skills layout з рівнями `Практикую` / `Вчу` / `Знайомий з`;
 - модульний Vanilla JS у `assets/js/`;
 - GitHub technical snapshot без фейкової статистики;
 - `robots.txt`;
@@ -194,7 +194,7 @@
 Що можна обережно покращити:
 
 - зробити `github.com/ZaGOR-1` у technical snapshot клікабельним;
-- розділити Skills на `практикую` / `знайомий з`, якщо треба чесніше показати рівень;
+- підтримувати Skills чесними за рівнями, якщо змінюється стек;
 - додати дуже легкий scrollbar polish;
 - перевірити light theme після кожних великих CSS змін.
 

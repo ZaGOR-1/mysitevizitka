@@ -4,10 +4,11 @@
  * Order matters:
  *   1. mark <html> as JS-enabled (CSS uses .js to hide reveal targets);
  *   2. capture the original UA copy from the DOM before any language is applied;
- *   3. init theme / nav / cli so they subscribe to "app:languagechange";
+ *   3. init language controls, theme, nav and cli so they subscribe to events;
  *   4. apply the saved/visible language — this fires the first languagechange,
  *      which lets every module render its initial labels and the CLI welcome;
- *   5. apply the preferred theme; stamp the year; register the service worker.
+ *   5. apply the preferred theme; wire small page actions; stamp the year;
+ *      register the service worker.
  */
 (function () {
   window.App = window.App || {};
@@ -25,6 +26,74 @@
     return App.i18n && App.theme && App.nav && App.cli;
   }
 
+  function translated(path) {
+    return App.i18n.getValue(path, App.i18n.getActiveLanguage()) || "";
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    return new Promise(function (resolve, reject) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.inset = "0 auto auto 0";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        if (document.execCommand("copy")) {
+          resolve();
+        } else {
+          reject(new Error("Copy command failed"));
+        }
+      } catch (error) {
+        reject(error);
+      } finally {
+        textarea.remove();
+      }
+    });
+  }
+
+  function initCopyEmail() {
+    const button = document.querySelector(".copy-email-button");
+    const status = document.querySelector(".copy-email-status");
+    if (!button) return;
+
+    let resetTimer = 0;
+
+    function setStatus(message) {
+      if (!status) return;
+      status.textContent = message;
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(function () {
+        status.textContent = "";
+      }, 2200);
+    }
+
+    button.addEventListener("click", function () {
+      const email = button.dataset.copyEmail || "";
+      if (!email) return;
+
+      copyText(email)
+        .then(function () {
+          setStatus(translated("contact.copiedEmail"));
+        })
+        .catch(function () {
+          setStatus(translated("contact.copyEmailError"));
+        });
+    });
+
+    document.addEventListener("app:languagechange", function () {
+      if (status) status.textContent = "";
+    });
+  }
+
   try {
     if (!hasRequiredModules()) {
       showStaticFallback();
@@ -34,12 +103,14 @@
     App.i18n.captureUkFromDom();
     root.classList.add("js");
 
+    App.i18n.init();
     App.theme.init();
     App.nav.init();
     App.cli.init();
 
     App.i18n.setLanguage(App.i18n.getSavedLanguage(), false);
     App.theme.apply(App.theme.getPreferred());
+    initCopyEmail();
   } catch (error) {
     showStaticFallback();
     return;
