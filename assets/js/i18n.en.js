@@ -56,7 +56,7 @@
       availabilityStatus: "Availability and collaboration format",
       copyEmail: "Copy email",
       githubProfile: "Denys Zahorovskyi GitHub profile",
-      telegramProfile: "Denys Zahorovskyi Telegram profile",
+      telegramProfile: "Telegram bot for contacting Denys Zahorovskyi",
       linkedinProfile: "Denys Zahorovskyi LinkedIn profile",
       socialLinks: "Social links and contact"
     },
@@ -172,7 +172,7 @@
       aboutText: "I am a 2nd year Software Engineering student at Zhytomyr Polytechnic.\nLearning backend, databases, Linux environments and automation.",
       contactHeader: "=== CONTACT ===",
       contactEmail: "Email: ran31276@gmail.com",
-      contactTelegram: "Telegram: https://t.me/Denis_Zagor",
+      contactTelegram: "Telegram bot: https://t.me/contactinbox_bot",
       contactLinkedIn: "LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410",
       githubHeader: "=== GITHUB ===",
       githubProfile: "GitHub: https://github.com/ZaGOR-1",

@@ -49,7 +49,7 @@ portfolio/
 
 2. Підготувати плейсхолдери для посилань:
    - GitHub: `https://github.com/ZaGOR-1`;
-   - Telegram: `https://t.me/Denis_Zagor`;
+   - Telegram: `https://t.me/contactinbox_bot`;
    - LinkedIn: `https://www.linkedin.com/in/denis-zagorovskiy-a23b05410`;
    - Email: `mailto:ran31276@gmail.com`.
 
@@ -232,7 +232,7 @@ https://github.com/ZaGOR-1
 
 ```text
 GitHub:   https://github.com/ZaGOR-1
-Telegram: https://t.me/Denis_Zagor
+Telegram: https://t.me/contactinbox_bot
 LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410
 Email:    ran31276@gmail.com
 ```
@@ -305,7 +305,7 @@ Open Graph description:
 ```text
 Ім'я: Denis
 GitHub акаунт: ZaGOR-1
-Telegram акаунт: Denis_Zagor
+Telegram bot: contactinbox_bot
 LinkedIn profile: denis-zagorovskiy-a23b05410
 Email: ran31276@gmail.com
 Домен для деплою: about.me.hotzagor.tech

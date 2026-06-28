@@ -165,12 +165,12 @@ github.com/ZaGOR-1
 
 на своє посилання.
 
-### Telegram
+### Telegram bot
 
 Заміни:
 
 ```text
-https://t.me/Denis_Zagor
+https://t.me/contactinbox_bot
 ```
 
 ### LinkedIn
@@ -586,7 +586,7 @@ sudo find /var/www/mysitevizitka -type f -exec chmod 644 {} \;
 
 - `https://github.com/ZaGOR-1`
 - `github.com/ZaGOR-1`
-- `https://t.me/Denis_Zagor`
+- `https://t.me/contactinbox_bot`
 - `https://www.linkedin.com/in/denis-zagorovskiy-a23b05410`
 - `ran31276@gmail.com`
 - `https://about.me.hotzagor.tech`

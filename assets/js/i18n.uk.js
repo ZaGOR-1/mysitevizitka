@@ -38,7 +38,7 @@
       aboutText: "Я студент 2 курсу спеціальності 121 \"Інженерія програмного забезпечення\" у Житомирській політехніці.\nВивчаю backend, роботу з базами даних, Linux-середовище й автоматизацію.",
       contactHeader: "=== КОНТАКТИ ===",
       contactEmail: "Email: ran31276@gmail.com",
-      contactTelegram: "Telegram: https://t.me/Denis_Zagor",
+      contactTelegram: "Telegram-бот: https://t.me/contactinbox_bot",
       contactLinkedIn: "LinkedIn: https://www.linkedin.com/in/denis-zagorovskiy-a23b05410",
       githubHeader: "=== GITHUB ===",
       githubProfile: "GitHub: https://github.com/ZaGOR-1",

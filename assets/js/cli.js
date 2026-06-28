@@ -132,7 +132,7 @@
         const out =
           '<span class="code-keyword">' + escapeHtml(t("cli.contactHeader")) + "</span><br>" +
           "  * " + formatCliLink(t("cli.contactEmail"), "mailto:ran31276@gmail.com") + "<br>" +
-          "  * " + formatCliLink(t("cli.contactTelegram"), "https://t.me/Denis_Zagor") + "<br>" +
+          "  * " + formatCliLink(t("cli.contactTelegram"), "https://t.me/contactinbox_bot") + "<br>" +
           "  * " + formatCliLink(t("cli.contactLinkedIn"), "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410");
         appendCliLine(out);
       },
