@@ -582,6 +582,26 @@ sudo find /var/www/mysitevizitka -type d -exec chmod 755 {} \;
 sudo find /var/www/mysitevizitka -type f -exec chmod 644 {} \;
 ```
 
+## SEO після деплою
+
+Після публікації або значущих змін на сайті:
+
+1. Додай домен `about.me.hotzagor.tech` у Google Search Console.
+2. Підтвердь ownership через DNS або HTML-файл.
+3. Відправ sitemap:
+
+```text
+https://about.me.hotzagor.tech/sitemap.xml
+```
+
+4. Перевір головну сторінку через URL Inspection і натисни request indexing.
+5. Перевір JSON-LD через Rich Results Test.
+6. Перевір швидкість через PageSpeed Insights.
+
+Для AI Overviews / AI Mode не потрібні окремі `llms.txt`, спеціальні AI-файли або окрема AI-schema. Головне: доступний HTML-контент, коректний sitemap, structured data, нормальний page experience і підтверджений сайт у Search Console.
+
+Якщо треба індексувати англійську версію окремо, наступна окрема задача — зробити статичний `/en/` URL і додати `hreflang`. Поточний перемикач UA/EN працює для користувача, але це не повноцінна окрема мовна сторінка для SEO.
+
 ## Поточні контактні значення
 
 - `https://github.com/ZaGOR-1`

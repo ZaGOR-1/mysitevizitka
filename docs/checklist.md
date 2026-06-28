@@ -81,7 +81,18 @@ http://localhost:8000
 - `robots.txt` містить актуальний sitemap URL;
 - `sitemap.xml` містить актуальний домен;
 - `site.webmanifest` валідний JSON;
-- JSON-LD `Person` містить актуальні ім'я, сайт і social links.
+- JSON-LD `WebSite`, `ProfilePage` і `Person` містять актуальні ім'я, сайт і social links;
+- Search Console property додана й підтверджена;
+- `sitemap.xml` відправлений у Search Console;
+- головна сторінка перевірена через URL Inspection;
+- structured data перевірена через Rich Results Test;
+- PageSpeed Insights не показує критичних проблем.
+
+Опційно для кращого multilingual SEO:
+
+- зробити окремі URL для мовних версій, наприклад `/` або `/uk/` і `/en/`;
+- додати `hreflang` тільки після появи окремих URL;
+- додати обидві мовні сторінки в sitemap.
 
 ## 6. VPS sanity
 

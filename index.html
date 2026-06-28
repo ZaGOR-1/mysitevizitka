@@ -2,26 +2,27 @@
 <html lang="uk">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-72KcdqKyTLygkeWZ6bRoLbIXpdmWngzxjF0Cy/1lFsg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; form-action 'self'; base-uri 'self'; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-5sNZYqd3lmXgFBjnw38ZdaH52mcYynVTSJEmWR9rinw='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; form-action 'self'; base-uri 'self'; object-src 'none';">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>(function(){try{var s=localStorage.getItem("portfolio-theme");var t=(s==="light"||s==="dark")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(t==="light"){document.documentElement.setAttribute("data-theme","light")}var l=localStorage.getItem("site-language");if(l==="en"||l==="uk"){document.documentElement.setAttribute("lang",l)}}catch(e){}})();</script>
-    <meta name="description" content="Персональний сайт-візитка Дениса Загоровського: студент Software Engineering, початківець backend/frontend developer, який вивчає веброзробку, Linux, сервери й автоматизацію.">
+    <meta name="description" content="Денис Загоровський — студент Software Engineering, який вивчає web development, backend, Linux, VPS deployment і автоматизацію.">
     <meta name="author" content="Денис Загоровський">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0d0f12">
 
     <meta property="og:title" content="Денис Загоровський — Software Engineering Student">
-    <meta property="og:description" content="Мінімалістичне портфоліо студента Software Engineering з фокусом на Web, Backend, Linux і Automation.">
+    <meta property="og:description" content="Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://about.me.hotzagor.tech">
     <meta property="og:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
     <meta property="og:locale" content="uk_UA">
+    <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Денис Загоровський — Software Engineering Student">
-    <meta name="twitter:description" content="Мінімалістичне портфоліо студента Software Engineering з фокусом на Web, Backend, Linux і Automation.">
+    <meta name="twitter:description" content="Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.">
     <meta name="twitter:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
 
-    <title>Денис Загоровський — сайт-візитка програміста</title>
+    <title>Денис Загоровський — Software Engineering Student, Web & Backend</title>
 
     <link rel="canonical" href="https://about.me.hotzagor.tech/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -34,22 +35,62 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Денис Загоровський",
-      "alternateName": "Denys Zahorovskyi",
-      "url": "https://about.me.hotzagor.tech",
-      "email": "ran31276@gmail.com",
-      "jobTitle": "Software Engineering Student",
-      "knowsAbout": ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Symfony", "Python", "C", "C#", "MySQL", "SQLite", "Git", "Linux", "Nginx", "Telegram Bots"],
-      "sameAs": [
-        "https://github.com/ZaGOR-1",
-        "https://t.me/contactinbox_bot",
-        "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410"
-      ],
-      "affiliation": {
-        "@type": "EducationalOrganization",
-        "name": "Житомирська політехніка"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://about.me.hotzagor.tech/#website",
+          "url": "https://about.me.hotzagor.tech/",
+          "name": "Денис Загоровський — Portfolio",
+          "alternateName": "Denys Zahorovskyi — Portfolio",
+          "inLanguage": ["uk", "en"],
+          "publisher": {
+            "@id": "https://about.me.hotzagor.tech/#person"
+          }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://about.me.hotzagor.tech/#profile",
+          "url": "https://about.me.hotzagor.tech/",
+          "name": "Денис Загоровський — Software Engineering Student",
+          "description": "Студент Software Engineering, який вивчає web development, backend, Linux, VPS deployment і автоматизацію.",
+          "inLanguage": "uk",
+          "isPartOf": {
+            "@id": "https://about.me.hotzagor.tech/#website"
+          },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://about.me.hotzagor.tech/assets/og-image.png"
+          },
+          "mainEntity": {
+            "@id": "https://about.me.hotzagor.tech/#person"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://about.me.hotzagor.tech/#person",
+          "name": "Денис Загоровський",
+          "alternateName": "Denys Zahorovskyi",
+          "url": "https://about.me.hotzagor.tech/",
+          "email": "mailto:ran31276@gmail.com",
+          "jobTitle": "Software Engineering Student",
+          "description": "Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.",
+          "knowsLanguage": ["uk", "en"],
+          "knowsAbout": ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Symfony", "Python", "C", "C#", "MySQL", "SQLite", "Git", "Linux", "Nginx", "VPS Deployment", "Telegram Bots", "Automation"],
+          "sameAs": [
+            "https://github.com/ZaGOR-1",
+            "https://t.me/contactinbox_bot",
+            "https://www.linkedin.com/in/denis-zagorovskiy-a23b05410"
+          ],
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Житомирська політехніка"
+          },
+          "affiliation": {
+            "@type": "EducationalOrganization",
+            "name": "Житомирська політехніка"
+          }
+        }
+      ]
     }
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -173,6 +214,27 @@
               <li class="tag">vps</li>
               <li class="tag">telegram bots</li>
             </ul>
+            <div class="answer-summary" aria-label="Короткі відповіді про профіль" data-i18n-aria-label="aria.answerSummary">
+              <p class="item-label" data-i18n="about.answerTitle">Коротко</p>
+              <dl>
+                <div>
+                  <dt data-i18n="about.answerWhoLabel">Хто я?</dt>
+                  <dd data-i18n="about.answerWhoValue">Студент Software Engineering, який поступово розвивається у веброзробці.</dd>
+                </div>
+                <div>
+                  <dt data-i18n="about.answerLearningLabel">Що вивчаю?</dt>
+                  <dd data-i18n="about.answerLearningValue">Backend, frontend basics, Linux, VPS deployment, SQL і автоматизацію.</dd>
+                </div>
+                <div>
+                  <dt data-i18n="about.answerHelpLabel">З чим можу допомогти?</dt>
+                  <dd data-i18n="about.answerHelpValue">Навчальні проєкти, прості вебзастосунки, Telegram-боти й скрипти автоматизації.</dd>
+                </div>
+                <div>
+                  <dt data-i18n="about.answerContactLabel">Як зв'язатися?</dt>
+                  <dd data-i18n="about.answerContactValue">Через email або Telegram-бот у секції контактів.</dd>
+                </div>
+              </dl>
+            </div>
             <dl class="profile-panel" aria-label="Короткий профіль" data-i18n-aria-label="aria.quickProfile">
               <div>
                 <dt data-i18n="about.profileEducationLabel">Освіта</dt>

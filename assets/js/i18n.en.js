@@ -12,10 +12,10 @@
 
   App.dict.en = {
     meta: {
-      title: "Denys Zahorovskyi — developer portfolio",
-      description: "Personal website of Denys Zahorovskyi, a Software Engineering student learning web development, backend, Linux, servers and automation.",
-      ogTitle: "Denys Zahorovskyi — developer portfolio",
-      ogDescription: "Minimal developer portfolio of a Software Engineering student focused on Web, Backend, Linux and Automation.",
+      title: "Denys Zahorovskyi — Software Engineering Student, Web & Backend",
+      description: "Denys Zahorovskyi is a Software Engineering student learning web development, backend, Linux, VPS deployment and automation.",
+      ogTitle: "Denys Zahorovskyi — Software Engineering Student",
+      ogDescription: "Software Engineering student focused on web development, backend, Linux, VPS deployment and automation.",
       locale: "en_US"
     },
     skip: {
@@ -47,6 +47,7 @@
       terminalTabs: "Terminal block switcher",
       terminalInput: "Terminal command input",
       interests: "Areas of interest",
+      answerSummary: "Short profile answers",
       quickProfile: "Quick profile",
       learningNow: "What I am learning and practicing now",
       focusGrid: "Current growth directions",
@@ -86,6 +87,15 @@
       title: "About me",
       p1: 'I am a 2nd year student of specialty 121 "Software Engineering" at Zhytomyr Polytechnic. I am growing in web development, learning backend fundamentals, databases, Linux environments and VPS deployment.',
       p2: "I am interested in practical things: servers, automation, Telegram bots, Windows optimization, Minecraft servers and small web applications that can be launched, tested and improved.",
+      answerTitle: "Quick answers",
+      answerWhoLabel: "Who am I?",
+      answerWhoValue: "A Software Engineering student gradually growing in web development.",
+      answerLearningLabel: "What am I learning?",
+      answerLearningValue: "Backend, frontend basics, Linux, VPS deployment, SQL and automation.",
+      answerHelpLabel: "What can I help with?",
+      answerHelpValue: "Learning projects, simple web applications, Telegram bots and automation scripts.",
+      answerContactLabel: "How to contact me?",
+      answerContactValue: "By email or Telegram bot in the contact section.",
       profileEducationLabel: "Education",
       profileEducationValue: "Software Engineering, 2nd year",
       profileUniversityLabel: "University",
