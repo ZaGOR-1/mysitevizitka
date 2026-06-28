@@ -1,5 +1,5 @@
-/* Fonts are linked directly in index.html (<link> + preload) so the browser
-   can start fetching them in parallel instead of after this file is parsed. */
+/* Font CSS is preloaded in index.html and applied by main.js after first render
+   so custom fonts do not block the initial page paint. */
 :root {
   color-scheme: dark;
 

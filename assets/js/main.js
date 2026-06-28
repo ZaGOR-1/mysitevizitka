@@ -30,6 +30,15 @@
     return App.i18n.getValue(path, App.i18n.getActiveLanguage()) || "";
   }
 
+  function loadFontStylesheet() {
+    if (document.querySelector('link[href="assets/fonts/fonts.css"][rel="stylesheet"]')) return;
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "assets/fonts/fonts.css";
+    document.head.appendChild(link);
+  }
+
   function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) {
       return navigator.clipboard.writeText(text);
@@ -110,6 +119,7 @@
 
     App.i18n.setLanguage(App.i18n.getSavedLanguage(), false);
     App.theme.apply(App.theme.getPreferred());
+    loadFontStylesheet();
     initCopyEmail();
   } catch (error) {
     showStaticFallback();

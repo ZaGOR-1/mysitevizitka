@@ -73,7 +73,9 @@
 
       const parent = cliOutput.closest(".terminal-code") || cliOutput.closest(".terminal-cli");
       if (parent) {
-        parent.scrollTop = parent.scrollHeight;
+        window.requestAnimationFrame(function () {
+          parent.scrollTop = parent.scrollHeight;
+        });
       }
     }
 

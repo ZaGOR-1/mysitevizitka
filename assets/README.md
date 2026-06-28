@@ -40,7 +40,7 @@ assets/fonts/fonts.css
 assets/fonts/*.woff2
 ```
 
-Файл `fonts.css` містить `@font-face` для `Manrope` і `JetBrains Mono`. Він підключений у `<head>` файлу `index.html` перед `styles.css`, щоб шрифти були доступні без зовнішніх CDN.
+Файл `fonts.css` містить `@font-face` для `Manrope` і `JetBrains Mono`. Він попередньо завантажується у `<head>` файлу `index.html`, а застосовується через `assets/js/main.js` після першого рендера, щоб шрифти були локальними й не блокували початкове відображення.
 
 Приклад:
 

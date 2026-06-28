@@ -248,12 +248,13 @@ html[data-theme="light"] {
 
 - `Manrope` з вагами `400`, `500`, `600`, `700`;
 - `JetBrains Mono` з вагами `400`, `500`, `600`;
-- `font-display: swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження.
+- `font-display: swap`, щоб текст швидко показувався fallback-шрифтом під час завантаження;
+- `fonts.css` попередньо завантажується в `<head>`, а застосовується через `assets/js/main.js` після першого рендера, щоб шрифти не блокували початкове відображення.
 
-Локальний файл шрифтів підключено в `<head>` файлу `index.html` перед основними стилями:
+Локальний файл шрифтів попередньо завантажено в `<head>` файлу `index.html`:
 
 ```html
-<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="preload" as="style" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="styles.css">
 ```
 
