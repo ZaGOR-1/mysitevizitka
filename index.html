@@ -2,7 +2,7 @@
 <html lang="uk">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-5sNZYqd3lmXgFBjnw38ZdaH52mcYynVTSJEmWR9rinw='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; form-action 'self'; base-uri 'self'; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-UadVQgKfR0i9DccS6jXxZJPK7r8iITEsM4ZvqbLjUd8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; form-action 'self'; base-uri 'self'; object-src 'none';">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>(function(){try{var s=localStorage.getItem("portfolio-theme");var t=(s==="light"||s==="dark")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(t==="light"){document.documentElement.setAttribute("data-theme","light")}var l=localStorage.getItem("site-language");if(l==="en"||l==="uk"){document.documentElement.setAttribute("lang",l)}}catch(e){}})();</script>
     <meta name="description" content="Денис Загоровський — студент Software Engineering, який вивчає web development, backend, Linux, VPS deployment і автоматизацію.">
@@ -13,11 +13,16 @@
     <meta property="og:title" content="Денис Загоровський — Software Engineering Student">
     <meta property="og:description" content="Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://about.me.hotzagor.tech">
+    <meta property="og:url" content="https://about.me.hotzagor.tech/">
     <meta property="og:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
+    <meta property="og:site_name" content="Денис Загоровський — Portfolio">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:locale" content="uk_UA">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://about.me.hotzagor.tech/">
     <meta name="twitter:title" content="Денис Загоровський — Software Engineering Student">
     <meta name="twitter:description" content="Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.">
     <meta name="twitter:image" content="https://about.me.hotzagor.tech/assets/og-image.png">
@@ -71,11 +76,11 @@
           "name": "Денис Загоровський",
           "alternateName": "Denys Zahorovskyi",
           "url": "https://about.me.hotzagor.tech/",
-          "email": "mailto:ran31276@gmail.com",
+          "image": "https://about.me.hotzagor.tech/assets/og-image.png",
           "jobTitle": "Software Engineering Student",
           "description": "Студент Software Engineering з фокусом на web development, backend, Linux, VPS deployment і автоматизацію.",
           "knowsLanguage": ["uk", "en"],
-          "knowsAbout": ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Symfony", "Python", "C", "C#", "MySQL", "SQLite", "Git", "Linux", "Nginx", "VPS Deployment", "Telegram Bots", "Automation"],
+          "knowsAbout": ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Symfony", "Python", "C", "C#", "MySQL", "SQLite", "Git", "Linux", "Nginx", "VPS Deployment", "Telegram Bots", "Automation", "Windows Tweaker", "Photo Gallery", "CRUD APIs", "Postman"],
           "sameAs": [
             "https://github.com/ZaGOR-1",
             "https://t.me/contactinbox_bot",
@@ -349,6 +354,67 @@
                 <li data-i18n="github.itemAutomation">скрипти автоматизації</li>
                 <li data-i18n="github.itemNotes">Linux/VPS нотатки</li>
               </ul>
+              <div class="project-cards" aria-label="Картки проєктів" data-i18n-aria-label="aria.projectCards">
+                <article class="project-card">
+                  <p class="project-card-kicker" data-i18n="github.projectMovieType">Telegram bot</p>
+                  <h3 data-i18n="github.projectMovieTitle">Movie Finder Telegram Bot</h3>
+                  <p data-i18n="github.projectMovieText">Бот для пошуку фільмів за описом або назвою з інтеграцією зовнішніх API, кешуванням, логами та адмін-командами.</p>
+                  <ul class="project-stack">
+                    <li>Python</li>
+                    <li>aiogram</li>
+                    <li>SQLite</li>
+                    <li>Linux VPS</li>
+                  </ul>
+                </article>
+
+                <article class="project-card">
+                  <p class="project-card-kicker" data-i18n="github.projectTweakerType">Windows utility</p>
+                  <h3 data-i18n="github.projectTweakerTitle">Windows Tweaker</h3>
+                  <p data-i18n="github.projectTweakerText">Експериментальний Windows-інструмент для системних налаштувань, оптимізації, роботи з реєстром, службами та зворотними змінами.</p>
+                  <ul class="project-stack">
+                    <li>C#</li>
+                    <li>WinForms</li>
+                    <li>.NET Framework</li>
+                    <li>Windows</li>
+                  </ul>
+                </article>
+
+                <article class="project-card">
+                  <p class="project-card-kicker" data-i18n="github.projectPortfolioType">Portfolio website</p>
+                  <h3 data-i18n="github.projectPortfolioTitle">Personal Portfolio Website</h3>
+                  <p data-i18n="github.projectPortfolioText">Особистий сайт-портфоліо зі статичною HTML/CSS/JS-архітектурою, двомовністю, JSON-LD розміткою, sitemap і SEO-оптимізацією.</p>
+                  <ul class="project-stack">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>SEO</li>
+                  </ul>
+                </article>
+
+                <article class="project-card">
+                  <p class="project-card-kicker" data-i18n="github.projectGalleryType">PHP web app</p>
+                  <h3 data-i18n="github.projectGalleryTitle">PHP Photo Gallery</h3>
+                  <p data-i18n="github.projectGalleryText">Навчальна фотогалерея з альбомами, завантаженням зображень, EXIF-даними, базою даних і базовою адмін-логікою.</p>
+                  <ul class="project-stack">
+                    <li>PHP</li>
+                    <li>MySQL</li>
+                    <li>SQLite</li>
+                    <li>EXIF</li>
+                  </ul>
+                </article>
+
+                <article class="project-card">
+                  <p class="project-card-kicker" data-i18n="github.projectBankType">Backend CRUD</p>
+                  <h3 data-i18n="github.projectBankTitle">Laravel / Symfony Bank CRUD</h3>
+                  <p data-i18n="github.projectBankText">Навчальний CRUD-проєкт для роботи з банківськими сутностями, API-запитами, MySQL, міграціями та Postman-колекціями.</p>
+                  <ul class="project-stack">
+                    <li>Laravel</li>
+                    <li>Symfony</li>
+                    <li>MySQL</li>
+                    <li>Postman</li>
+                  </ul>
+                </article>
+              </div>
               <dl class="github-snapshot" aria-label="GitHub technical snapshot" data-i18n-aria-label="aria.githubSnapshot">
                 <div>
                   <dt data-i18n="github.snapshotProfileLabel">profile</dt>
@@ -439,12 +505,12 @@
       </div>
     </footer>
 
-    <script src="assets/js/i18n.en.js"></script>
-    <script src="assets/js/i18n.uk.js"></script>
-    <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/cli.js"></script>
-    <script src="assets/js/nav.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script defer src="assets/js/i18n.en.js"></script>
+    <script defer src="assets/js/i18n.uk.js"></script>
+    <script defer src="assets/js/i18n.js"></script>
+    <script defer src="assets/js/theme.js"></script>
+    <script defer src="assets/js/cli.js"></script>
+    <script defer src="assets/js/nav.js"></script>
+    <script defer src="assets/js/main.js"></script>
   </body>
 </html>

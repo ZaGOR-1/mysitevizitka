@@ -53,12 +53,16 @@ server {
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
     # script-src містить sha256-хеш інлайн-скрипта в <head> (тема/мова без FOUC).
     # Хеш має збігатися з CSP у index.html; онови його, якщо змінюєш інлайн-скрипт.
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-5sNZYqd3lmXgFBjnw38ZdaH52mcYynVTSJEmWR9rinw='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-fFal+OAm0aZjRiTFKt2h0LSj65vcx3AZvJ3PZbe1MnU=' 'sha256-UadVQgKfR0i9DccS6jXxZJPK7r8iITEsM4ZvqbLjUd8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://about.me.hotzagor.tech; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';" always;
 
-    # Увімкни після переходу на HTTPS (Certbot):
+    # Увімкни в HTTPS server-блоці після переходу на HTTPS (Certbot):
     # add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # Trusted Types не вмикаємо без окремого JS-рефакторингу:
+    # поточний terminal/i18n код контрольовано використовує innerHTML.
 
     # Gzip
     gzip on;

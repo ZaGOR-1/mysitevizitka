@@ -1415,6 +1415,67 @@ html[data-theme="light"] .code-key {
   color: var(--color-accent);
 }
 
+.project-cards {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-block-start: var(--space-xl);
+  margin-inline-start: var(--space-lg);
+  max-width: 920px;
+}
+
+.project-card {
+  display: grid;
+  gap: var(--space-sm);
+  align-content: start;
+  padding: var(--space-lg);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-surface-soft) 46%, transparent);
+}
+
+.project-card-kicker {
+  margin: 0;
+  padding: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: lowercase;
+}
+
+.github-panel .project-card p {
+  max-width: none;
+  padding-inline-start: 0;
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.project-card h3 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.25;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: var(--space-xs) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-stack li {
+  padding: 0.32rem 0.55rem;
+  border: var(--border-thin);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+}
+
 .contact-email,
 .footer-note {
   font-family: var(--font-mono);
@@ -1803,7 +1864,8 @@ html[data-theme="light"] .code-key {
   .github-panel p,
   .github-panel .github-list,
   .github-panel .button,
-  .github-snapshot {
+  .github-snapshot,
+  .project-cards {
     margin-inline-start: var(--space-md);
     margin-inline-end: var(--space-xs);
   }
@@ -1816,6 +1878,10 @@ html[data-theme="light"] .code-key {
     grid-template-columns: 1fr;
     gap: var(--space-2xs);
     align-items: start;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
   }
 
   .profile-panel {

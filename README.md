@@ -551,6 +551,30 @@ curl -I https://about.me.hotzagor.tech/docs/plan.md
 200 OK
 ```
 
+Також перевір security headers:
+
+```bash
+curl -I https://about.me.hotzagor.tech
+```
+
+Бажано бачити:
+
+```text
+Content-Security-Policy: ...
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Cross-Origin-Opener-Policy: same-origin
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+```
+
+Якщо цих заголовків немає, додай їх у HTTPS `server` block Nginx і виконай:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
 ## Як оновлювати сайт через Git
 
 На локальному ПК:

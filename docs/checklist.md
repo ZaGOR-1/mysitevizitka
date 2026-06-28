@@ -113,3 +113,20 @@ curl -I https://about.me.hotzagor.tech/README.md
 - `docs/`, `.git/`, `README.md`, `AGENTS.md` не віддаються як `200`;
 - CSS/JS/HTML мають короткий або `no-cache` cache policy;
 - images/fonts можуть кешуватися довше.
+
+Перевірити security headers:
+
+```bash
+curl -I https://about.me.hotzagor.tech
+```
+
+Бажані заголовки:
+
+- `Content-Security-Policy`;
+- `Strict-Transport-Security`;
+- `Cross-Origin-Opener-Policy`;
+- `X-Frame-Options` або CSP `frame-ancestors`;
+- `X-Content-Type-Options`;
+- `Referrer-Policy`.
+
+Trusted Types (`require-trusted-types-for 'script'`) не вмикати без окремого JS-рефакторингу, бо поточний terminal/i18n код контрольовано використовує `innerHTML`.

@@ -59,7 +59,8 @@
       githubProfile: "Denys Zahorovskyi GitHub profile",
       telegramProfile: "Telegram bot for contacting Denys Zahorovskyi",
       linkedinProfile: "Denys Zahorovskyi LinkedIn profile",
-      socialLinks: "Social links and contact"
+      socialLinks: "Social links and contact",
+      projectCards: "Project cards"
     },
     nav: {
       about: "About",
@@ -149,6 +150,21 @@
       snapshotContentValue: "learning projects · bots · scripts · server notes",
       snapshotFocusLabel: "latest focus",
       snapshotFocusValue: "backend / linux / automation",
+      projectMovieType: "Telegram bot",
+      projectMovieTitle: "Movie Finder Telegram Bot",
+      projectMovieText: "A bot for finding movies by description or title with external API integration, caching, logs and admin commands.",
+      projectTweakerType: "Windows utility",
+      projectTweakerTitle: "Windows Tweaker",
+      projectTweakerText: "An experimental Windows tool for system settings, optimization, registry changes, services and reversible tweaks.",
+      projectPortfolioType: "Portfolio website",
+      projectPortfolioTitle: "Personal Portfolio Website",
+      projectPortfolioText: "A personal portfolio site with static HTML/CSS/JS architecture, bilingual UI, JSON-LD markup, sitemap and SEO optimization.",
+      projectGalleryType: "PHP web app",
+      projectGalleryTitle: "PHP Photo Gallery",
+      projectGalleryText: "A learning photo gallery with albums, image uploads, EXIF data, database usage and basic admin logic.",
+      projectBankType: "Backend CRUD",
+      projectBankTitle: "Laravel / Symfony Bank CRUD",
+      projectBankText: "A learning CRUD project for bank-related entities, API requests, MySQL, migrations and Postman collections.",
       button: "Go to GitHub"
     },
     contact: {
